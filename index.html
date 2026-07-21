@@ -424,6 +424,17 @@
         </select>
       </div>
 
+      <!-- Engineering Role Selector -->
+      <div class="space-y-2">
+        <label for="dev-role-select" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Engineering Role to Update</label>
+        <select id="dev-role-select" onchange="onDevRoleChange()" class="w-full rounded-xl px-4 py-2.5 text-sm font-semibold">
+          <option value="0">Liam Sterling (Frontend / Mobile Lead)</option>
+          <option value="1">Dr. Cynthia Vance (Backend / Database Engineer)</option>
+          <option value="2">Marcus Chen (UI/UX Designer & Mobile Dev)</option>
+          <option value="3">Elena Rostova (Security, Maps & Telemetry Lead)</option>
+        </select>
+      </div>
+
       <!-- Logged Hours -->
       <div class="space-y-2">
         <label for="dev-hours" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Logged Weekly Hours</label>
@@ -484,27 +495,22 @@
       </div>
 
       <div class="space-y-4">
-        <!-- Developer Role Dropdown -->
+        <!-- Developer Name Text Box -->
         <div class="space-y-2">
-          <label for="auth-dev-select" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Select Developer Identity</label>
-          <select id="auth-dev-select" class="w-full rounded-xl px-4 py-2.5 text-sm font-semibold">
-            <option value="0">Liam Sterling (Frontend / Mobile Lead)</option>
-            <option value="1">Dr. Cynthia Vance (Backend / Database Engineer)</option>
-            <option value="2">Marcus Chen (UI/UX Designer & Mobile Dev)</option>
-            <option value="3">Elena Rostova (Security, Maps & Telemetry Lead)</option>
-          </select>
+          <label for="auth-dev-name" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Developer Name</label>
+          <input type="text" id="auth-dev-name" class="w-full rounded-xl px-4 py-2.5 text-sm font-semibold" placeholder="e.g. Daniel Anyamene">
         </div>
 
-        <!-- 4-digit pin -->
+        <!-- Alphanumeric Password -->
         <div class="space-y-2">
-          <label for="auth-pin" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Enter 4-Digit Security Passcode</label>
-          <input type="password" id="auth-pin" max="9999" maxlength="4" class="w-full rounded-xl px-4 py-3 text-center text-xl font-bold tracking-[1em]" placeholder="••••">
-          <p class="text-[10px] text-slate-600 dark:text-slate-500 font-semibold italic text-center">Passwords: Liam (1111), Cynthia (2222), Marcus (3333), Elena (4444)</p>
+          <label for="auth-password" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Security Password</label>
+          <input type="password" id="auth-password" class="w-full rounded-xl px-4 py-3 text-sm font-semibold" placeholder="Enter Security Password">
+          <p class="text-[10px] text-slate-650 dark:text-slate-400 font-semibold italic text-center">Identity Details: Daniel Anyamene (Password: CV-Daniel-2026)</p>
         </div>
 
         <!-- Error Feedback -->
         <p id="auth-error" class="text-xs text-red-600 dark:text-red-400 font-bold hidden text-center uppercase tracking-wide">
-          ⚠ Verification failed: Invalid passcode key
+          ⚠ Verification failed: Invalid developer name or password
         </p>
       </div>
 

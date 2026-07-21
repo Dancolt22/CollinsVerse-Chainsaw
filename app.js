@@ -262,13 +262,9 @@ const DEFAULT_SPRINT_DATA = [
   }
 ];
 
-// Security Passcodes mapping
-const DEV_PIN_CODES = {
-  0: "1111", // Liam
-  1: "2222", // Cynthia
-  2: "3333", // Marcus
-  3: "4444", // Elena
-  "admin": "9999" // Super Admin bypass
+// Authorized Developers credential mapping
+const AUTHORIZED_DEVS = {
+  "Daniel Anyamene": "CV-Daniel-2026"
 };
 
 // App state variables
@@ -837,14 +833,16 @@ function showNotification(message, type = 'info') {
 // Developer Passcode Modal Handling
 function openDevAuthModal() {
   const modal = document.getElementById("auth-modal");
-  const pinInput = document.getElementById("auth-pin");
+  const nameInput = document.getElementById("auth-dev-name");
+  const passInput = document.getElementById("auth-password");
   const errorText = document.getElementById("auth-error");
   
-  if (modal && pinInput && errorText) {
-    pinInput.value = "";
+  if (modal && nameInput && passInput && errorText) {
+    nameInput.value = "";
+    passInput.value = "";
     errorText.classList.add("hidden");
     modal.classList.remove("hidden");
-    pinInput.focus();
+    nameInput.focus();
   }
 }
 
@@ -854,29 +852,29 @@ function closeDevAuthModal() {
 }
 
 function verifyDevPasscode() {
-  const devSelect = document.getElementById("auth-dev-select");
-  const pinInput = document.getElementById("auth-pin");
+  const nameInput = document.getElementById("auth-dev-name");
+  const passInput = document.getElementById("auth-password");
   const errorText = document.getElementById("auth-error");
 
-  if (!devSelect || !pinInput || !errorText) return;
+  if (!nameInput || !passInput || !errorText) return;
 
-  const selectedDevIndex = parseInt(devSelect.value);
-  const enteredPin = pinInput.value.trim();
+  const enteredName = nameInput.value.trim();
+  const enteredPassword = passInput.value.trim();
 
-  // Authentication validation mapping
-  const correctPin = DEV_PIN_CODES[selectedDevIndex];
-  const adminPin = DEV_PIN_CODES["admin"];
+  // Case-insensitive name match, exact password match
+  const isNameMatch = Object.keys(AUTHORIZED_DEVS).some(name => name.toLowerCase() === enteredName.toLowerCase());
+  const correctPassword = AUTHORIZED_DEVS["Daniel Anyamene"];
 
-  if (enteredPin === correctPin || enteredPin === adminPin) {
+  if (isNameMatch && enteredPassword === correctPassword) {
     // Success Authentication
-    currentAuthDevIndex = selectedDevIndex;
+    currentAuthDevIndex = 0;
     closeDevAuthModal();
     openDevDrawer();
   } else {
     // Error feedback
     errorText.classList.remove("hidden");
-    pinInput.value = "";
-    pinInput.focus();
+    passInput.value = "";
+    passInput.focus();
   }
 }
 
@@ -893,12 +891,17 @@ function openDevDrawer() {
     activeWeekSelect.value = activeWeekId.toString();
   }
 
+  const activeRoleSelect = document.getElementById("dev-role-select");
+  if (activeRoleSelect) {
+    activeRoleSelect.value = currentAuthDevIndex.toString();
+  }
+
   // Find Developer Role details
   const sampleWeek = sprintData[0];
   const devObject = sampleWeek.developers[currentAuthDevIndex];
 
   if (title) {
-    title.innerText = `Updating as: ${devObject.name} (${devObject.role})`;
+    title.innerText = `Updating as: Daniel Anyamene (Auditing: ${devObject.name})`;
   }
 
   // Populate drawer fields
@@ -907,6 +910,23 @@ function openDevDrawer() {
   if (drawer && backdrop) {
     backdrop.classList.add("active");
     drawer.classList.add("open");
+  }
+}
+
+// Triggered when role select dropdown changes inside drawer
+function onDevRoleChange() {
+  const activeRoleSelect = document.getElementById("dev-role-select");
+  if (activeRoleSelect) {
+    currentAuthDevIndex = parseInt(activeRoleSelect.value);
+    
+    const title = document.getElementById("drawer-dev-role");
+    const sampleWeek = sprintData[0];
+    const devObject = sampleWeek.developers[currentAuthDevIndex];
+    if (title && devObject) {
+      title.innerText = `Updating as: Daniel Anyamene (Auditing: ${devObject.name})`;
+    }
+    
+    populateDrawerFields();
   }
 }
 
