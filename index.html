@@ -43,10 +43,15 @@
         <p class="text-sm text-slate-500 dark:text-slate-400 font-semibold mt-0.5">Secure Mobility & Escort Ecosystem — Phase 1: Architecture</p>
       </div>
 
-      <!-- Theme Switcher in the corner -->
-      <button id="theme-toggle-btn" onclick="toggleTheme()" class="p-2.5 rounded-xl border-2 border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-900 text-slate-800 dark:text-slate-200 transition" title="Toggle Light/Dark Theme">
-        <i id="theme-icon" data-lucide="moon" class="w-5 h-5"></i>
-      </button>
+      <!-- Header Actions -->
+      <div class="flex items-center gap-3">
+        <button onclick="openDevUpdateModal()" class="px-4 py-2.5 rounded-xl border-2 border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-900 font-extrabold text-sm text-slate-850 dark:text-slate-150 transition">
+          Dev Quick Update
+        </button>
+        <button id="theme-toggle-btn" onclick="toggleTheme()" class="p-2.5 rounded-xl border-2 border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-900 text-slate-800 dark:text-slate-200 transition" title="Toggle Light/Dark Theme">
+          <i id="theme-icon" data-lucide="moon" class="w-5 h-5"></i>
+        </button>
+      </div>
 
     </div>
   </header>
@@ -80,6 +85,89 @@
       </div>
     </div>
   </footer>
+
+  <!-- Developer Quick Update Modal -->
+  <div id="dev-update-modal" class="fixed inset-0 z-[100] bg-slate-950/65 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="glass-panel max-w-lg w-full bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-200 dark:border-slate-800 p-6 space-y-6 shadow-2xl">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between border-b-2 border-slate-100 dark:border-slate-800 pb-3">
+        <div class="flex items-center gap-2.5">
+          <i data-lucide="edit-3" class="w-5 h-5 text-blue-600 dark:text-blue-400"></i>
+          <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Developer Quick Update</h3>
+        </div>
+        <button onclick="closeDevUpdateModal()" class="text-slate-400 hover:text-slate-650 dark:hover:text-slate-300">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Developer Selection -->
+          <div class="space-y-1.5">
+            <label for="modal-dev-select" class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Developer Identity</label>
+            <select id="modal-dev-select" class="w-full rounded-xl px-4 py-2.5 text-sm font-semibold border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+              <option value="0">Victor — UI/UX Lead</option>
+              <option value="1">Dan — Mobile App Lead</option>
+              <option value="2">Developer 3 — Backend & Database Engineer</option>
+              <option value="3">Developer 4 — Security & Maps Lead</option>
+            </select>
+          </div>
+
+          <!-- Week Selection -->
+          <div class="space-y-1.5">
+            <label for="modal-week-select" class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Sprint Week</label>
+            <select id="modal-week-select" class="w-full rounded-xl px-4 py-2.5 text-sm font-semibold border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+              <option value="1">Week 1</option>
+              <option value="2">Week 2</option>
+              <option value="3">Week 3</option>
+              <option value="4">Week 4</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Completed Tasks bullet points -->
+        <div class="space-y-1.5">
+          <label for="modal-tasks-input" class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Completed Tasks (One per line)</label>
+          <textarea id="modal-tasks-input" rows="4" placeholder="Type or paste deliverables here. Put each bullet point on a new line..." class="w-full rounded-xl px-4 py-3 text-base text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-655 font-semibold"></textarea>
+        </div>
+
+        <!-- Proof of deliverable link -->
+        <div class="space-y-1.5">
+          <label for="modal-proof-label" class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Proof Link Label</label>
+          <input type="text" id="modal-proof-label" placeholder="e.g. Figma Interactive Prototypes" class="w-full rounded-xl px-4 py-2.5 text-sm font-semibold border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-955">
+        </div>
+        <div class="space-y-1.5">
+          <label for="modal-proof-url" class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Proof Link URL</label>
+          <input type="text" id="modal-proof-url" placeholder="e.g. https://figma.com/..." class="w-full rounded-xl px-4 py-2.5 text-sm font-semibold border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-955">
+        </div>
+
+        <!-- Single shared passcode PIN -->
+        <div class="space-y-1.5 border-t-2 border-slate-100 dark:border-slate-800 pt-3">
+          <label for="modal-passcode" class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Shared Security PIN</label>
+          <input type="password" id="modal-passcode" placeholder="Enter Developer Passcode PIN" class="w-full rounded-xl px-4 py-2.5 text-sm font-semibold border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-955">
+        </div>
+
+        <!-- Error Feedback -->
+        <p id="modal-error" class="text-xs text-red-600 dark:text-red-400 font-bold hidden text-center uppercase tracking-wide">
+          ⚠ Verification failed: Invalid security PIN
+        </p>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="flex items-center gap-3 pt-2 border-t-2 border-slate-100 dark:border-slate-800">
+        <button onclick="submitDevUpdate()" class="flex-grow py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-xs uppercase tracking-wider transition flex items-center justify-center gap-2">
+          <i data-lucide="check-square" class="w-4 h-4"></i>
+          Submit Sprint Updates
+        </button>
+        <button onclick="closeDevUpdateModal()" class="px-5 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-slate-100 hover:bg-slate-200 dark:bg-slate-950 dark:hover:bg-slate-900 text-slate-700 dark:text-slate-300 font-bold text-xs uppercase tracking-wider transition">
+          Cancel
+        </button>
+      </div>
+
+    </div>
+  </div>
 
   <!-- Script logic link -->
   <script src="app.js"></script>
