@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CollinsVerse Client Monitoring & Development Dashboard - Real-time engineering governance and delivery portal for high-security mobility application.">
-  <title>CollinsVerse Technologies — Project Governance & Client Delivery Portal</title>
+  <meta name="description" content="CollinsVerse Technologies — Weekly Project Log. Simple, executive document-style delivery tracker.">
+  <title>CollinsVerse Technologies — Weekly Project Log</title>
   
   <!-- Tailwind CSS Play CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -14,546 +14,69 @@
       theme: {
         extend: {
           colors: {
-            brand: {
-              lightBg: '#f8fafc',
-              lightPanel: '#ffffff',
-              darkBg: '#0b1120',
-              darkPanel: 'rgba(17, 24, 39, 0.75)',
-              slateText: '#0f172a',
-            }
+            slateText: '#0f172a',
           }
         }
       }
     }
   </script>
   
-  <!-- Custom CSS for theme overrides & transitions -->
+  <!-- Custom CSS with base typography overrides -->
   <link rel="stylesheet" href="styles.css">
   
-  <!-- Lucide Icons for high-fidelity technical symbols -->
+  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="min-h-full flex flex-col antialiased transition-colors duration-300 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+<body class="min-h-full flex flex-col antialiased transition-colors duration-200 bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100">
 
-  <!-- Sticky Brand Banner & Top Seal -->
-  <header class="sticky top-0 z-50 glass-panel border-b border-slate-300 dark:border-white/10 bg-white/95 dark:bg-slate-900/80 backdrop-blur-md px-6 py-4">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+  <!-- Sticky Executive Header -->
+  <header class="sticky top-0 z-50 bg-white/95 dark:bg-slate-950/90 border-b-2 border-slate-200 dark:border-slate-800 backdrop-blur-md px-6 py-5">
+    <div class="max-w-4xl mx-auto flex items-center justify-between gap-4">
       
-      <!-- Brand Identity -->
-      <div class="flex items-center gap-3">
-        <div class="relative flex items-center justify-center w-12 h-12 rounded-xl bg-blue-600/10 border border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.15)]">
-          <i data-lucide="shield" class="w-7 h-7 text-blue-600 dark:text-blue-400"></i>
-          <span class="absolute inset-0 rounded-xl border border-blue-500/20 animate-ping opacity-20"></span>
+      <!-- Brand & Project Titles -->
+      <div>
+        <div class="flex items-center gap-2">
+          <h1 class="font-extrabold text-2xl tracking-tight text-slate-900 dark:text-white uppercase">CollinsVerse</h1>
+          <span class="text-xs font-bold bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded uppercase tracking-wider">Technologies</span>
         </div>
-        <div>
-          <div class="flex items-center gap-2">
-            <h1 class="font-extrabold text-xl tracking-wider text-slate-900 dark:text-white uppercase brand-glow">CollinsVerse</h1>
-            <span class="text-[11px] font-extrabold bg-blue-600/10 dark:bg-blue-500/10 border border-blue-500/30 text-blue-600 dark:text-blue-400 px-2.5 py-0.5 rounded-full uppercase tracking-widest">Technologies</span>
-          </div>
-          <p class="text-base text-slate-750 dark:text-slate-350 font-semibold">Project Governance & Client Delivery Portal</p>
-        </div>
+        <p class="text-lg font-bold text-slate-900 dark:text-slate-200 mt-1">Weekly Project Log</p>
+        <p class="text-sm text-slate-500 dark:text-slate-400 font-semibold mt-0.5">Secure Mobility & Escort Ecosystem — Phase 1: Architecture</p>
       </div>
 
-      <!-- Action Area: Dev update & Mode Switcher -->
-      <div class="flex items-center gap-3">
-        
-        <!-- Developer Update Terminal Trigger -->
-        <button onclick="openDevAuthModal()" class="px-4 py-2 rounded-xl border border-blue-600 bg-blue-600/10 text-blue-700 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600/20 dark:hover:text-blue-300 font-bold text-sm tracking-wide flex items-center gap-2 transition">
-          <i data-lucide="code-2" class="w-4 h-4"></i>
-          Dev Input Terminal
-        </button>
+      <!-- Theme Switcher in the corner -->
+      <button id="theme-toggle-btn" onclick="toggleTheme()" class="p-2.5 rounded-xl border-2 border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-900 text-slate-800 dark:text-slate-200 transition" title="Toggle Light/Dark Theme">
+        <i id="theme-icon" data-lucide="moon" class="w-5 h-5"></i>
+      </button>
 
-        <!-- Theme Mode Switcher (Sun/Moon Toggle) -->
-        <button id="theme-toggle-btn" onclick="toggleTheme()" class="p-2 rounded-xl border border-slate-300 dark:border-white/10 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition" title="Toggle Light/Dark Theme">
-          <i id="theme-icon" data-lucide="moon" class="w-5 h-5"></i>
-        </button>
-
-        <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-600/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-400 text-xs font-bold">
-          <span class="relative flex h-2.5 w-2.5">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-600"></span>
-          </span>
-          SYNC ACTIVE
-        </div>
-
-      </div>
     </div>
   </header>
 
-  <!-- Main Container -->
-  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+  <!-- Main Executive Document Container -->
+  <main class="flex-grow max-w-4xl w-full mx-auto px-6 py-10 space-y-8">
     
-    <!-- Project Title & Scope Summary -->
-    <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 bg-white dark:bg-slate-900/40 p-6 rounded-2xl border border-slate-200 dark:border-white/5 shadow-sm backdrop-blur-md">
-      <div>
-        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
-          <i data-lucide="shield-check" class="w-8 h-8 text-emerald-600 dark:text-emerald-500"></i>
-          Secure Mobility & Escort Ecosystem
-        </h2>
-        <p class="text-base text-slate-600 dark:text-slate-400 mt-1.5 font-medium">Real-time governance dashboard monitoring hardware fingerprint authentication keys, SMS fallback systems, driver telemetry pipelines, and administrator dispatcher interfaces.</p>
-      </div>
-      
-      <!-- General Timeline Counter -->
-      <div class="flex items-center gap-3 text-sm bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-white/10 rounded-xl p-3.5 shadow-inner">
-        <i data-lucide="calendar" class="w-5 h-5 text-blue-600 dark:text-blue-400"></i>
-        <div>
-          <p class="text-[10px] text-slate-500 dark:text-slate-400 font-extrabold uppercase tracking-wider">Estimated MVP Launch</p>
-          <p class="text-slate-900 dark:text-white font-bold" id="mvp-target-date">Sept 15, 2026</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Summary Scorecards Row -->
-    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      
-      <!-- Completion Meter Card -->
-      <div class="glass-panel rounded-2xl p-6 relative overflow-hidden group bg-white dark:bg-slate-900/40">
-        <div class="absolute -right-4 -bottom-4 text-slate-200 dark:text-white/5 transition-transform duration-300 group-hover:scale-110 z-0">
-          <i data-lucide="trending-up" class="w-32 h-32"></i>
-        </div>
-        <div class="relative z-10">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Overall Project Progress</span>
-            <span class="p-2.5 bg-emerald-600/10 rounded-xl text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
-              <i data-lucide="percent" class="w-4.5 h-4.5"></i>
-            </span>
-          </div>
-          <div class="mt-4 flex items-baseline gap-2">
-            <span class="text-4xl font-black text-slate-900 dark:text-white tracking-tight" id="overall-progress-text">0%</span>
-            <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400" id="progress-delta-text">Calculating...</span>
-          </div>
-          <!-- Progress Bar -->
-          <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2 mt-4 overflow-hidden">
-            <div id="overall-progress-bar" class="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full transition-all duration-700 ease-out" style="width: 0%"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Current Phase Card -->
-      <div class="glass-panel rounded-2xl p-6 relative overflow-hidden group bg-white dark:bg-slate-900/40">
-        <div class="absolute -right-4 -bottom-4 text-slate-200 dark:text-white/5 transition-transform duration-300 group-hover:scale-110 z-0">
-          <i data-lucide="milestone" class="w-32 h-32"></i>
-        </div>
-        <div class="relative z-10">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Current Governance Phase</span>
-            <span class="p-2.5 bg-blue-600/10 rounded-xl text-blue-700 dark:text-blue-400 border border-blue-500/20">
-              <i data-lucide="layers" class="w-4.5 h-4.5"></i>
-            </span>
-          </div>
-          <div class="mt-4">
-            <h3 class="text-xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug">Phase 1: Architecture</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 font-semibold">Core UI/UX, Map Telemetry & Microservices Setup</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Engineers Count Card -->
-      <div class="glass-panel rounded-2xl p-6 relative overflow-hidden group bg-white dark:bg-slate-900/40">
-        <div class="absolute -right-4 -bottom-4 text-slate-200 dark:text-white/5 transition-transform duration-300 group-hover:scale-110 z-0">
-          <i data-lucide="users" class="w-32 h-32"></i>
-        </div>
-        <div class="relative z-10">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">CollinsVerse Dev Team</span>
-            <span class="p-2.5 bg-amber-600/10 rounded-xl text-amber-700 dark:text-amber-400 border border-amber-500/20">
-              <i data-lucide="code" class="w-4.5 h-4.5"></i>
-            </span>
-          </div>
-          <div class="mt-4">
-            <h3 class="text-3xl font-black text-slate-900 dark:text-white tracking-tight">4 Engineers</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 font-semibold">Dedicated Team, Real-Time Auditing</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Budget Contract Clearance -->
-      <div class="glass-panel rounded-2xl p-6 relative overflow-hidden group bg-white dark:bg-slate-900/40">
-        <div class="absolute -right-4 -bottom-4 text-slate-200 dark:text-white/5 transition-transform duration-300 group-hover:scale-110 z-0">
-          <i data-lucide="wallet" class="w-32 h-32"></i>
-        </div>
-        <div class="relative z-10">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Milestone Clearance Level</span>
-            <span class="p-2.5 bg-teal-600/10 rounded-xl text-teal-700 dark:text-teal-400 border border-teal-500/20">
-              <i data-lucide="award" class="w-4.5 h-4.5"></i>
-            </span>
-          </div>
-          <div class="mt-4">
-            <h3 class="text-3xl font-black text-slate-900 dark:text-white tracking-tight" id="clearance-level-text">0 / 4</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 font-semibold" id="clearance-desc-text">Commitment Released: 0%</p>
-          </div>
-        </div>
+    <!-- Week Selector Navigation -->
+    <section class="border-b-2 border-slate-200 dark:border-slate-800 pb-4">
+      <span class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest block mb-3">Audit Week Selector</span>
+      <div class="flex flex-wrap gap-2" id="weeks-tab-container">
+        <!-- Javascript will inject clean tabs here -->
       </div>
     </section>
 
-    <!-- Weekly Sprint Selector & Timeline Navigation -->
-    <section class="glass-panel rounded-2xl p-6 bg-white dark:bg-slate-900/40">
-      <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-200 dark:border-white/5 pb-4 mb-6 gap-4">
-        <div>
-          <h3 class="text-xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
-            <i data-lucide="kanban" class="w-6 h-6 text-blue-600 dark:text-blue-400"></i>
-            Weekly Sprint Tracking Matrix
-          </h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Audit detailed weekly tasks, check logged hours, check git commit hashes, and verify direct outputs per dev.</p>
-        </div>
-        <div class="flex items-center gap-2 self-start md:self-auto">
-          <span class="text-xs text-slate-600 dark:text-slate-400 font-extrabold uppercase tracking-wider">Quick Filter:</span>
-          <select id="quick-filter-select" class="bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-white/10 text-xs font-bold text-slate-800 dark:text-slate-200 px-3 py-1.5 rounded-xl focus:outline-none transition">
-            <option value="all">All Statuses</option>
-            <option value="completed">Completed Tasks</option>
-            <option value="pending">Pending Tasks</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Timeline Tabs Navigation -->
-      <div class="flex overflow-x-auto gap-3 pb-2 scroll-smooth" id="weeks-tab-container">
-        <!-- Javascript will inject weeks dynamically here -->
-      </div>
-    </section>
-
-    <!-- Active Weekly Sprint Panel (Interactive) -->
-    <section id="weekly-sprint-container">
-      <!-- Loaded dynamically via app.js -->
-    </section>
-
-    <!-- Deliverables Verification & Media Gallery -->
-    <section class="glass-panel rounded-2xl p-6 space-y-6 bg-white dark:bg-slate-900/40">
-      <div>
-        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
-          <i data-lucide="image" class="w-6 h-6 text-teal-600 dark:text-teal-400"></i>
-          Deliverables Verification & Proof of Output
-        </h3>
-        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Expand screen mockups of working features (User App, Dispatch Radar, and Admin Console) uploaded by the team.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
-        <!-- Media Card 1: User App Mobile Screen -->
-        <div class="bg-slate-100/50 dark:bg-slate-900/60 rounded-2xl overflow-hidden border border-slate-200 dark:border-white/5 flex flex-col justify-between group">
-          <div class="gallery-img-container aspect-video relative bg-slate-900 flex items-center justify-center cursor-pointer" onclick="openLightbox('assets/escort_user_app.png', 'Secure Transit & User App Live Tracking Mobile Screen')">
-            <img src="assets/escort_user_app.png" alt="User App Screen" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300">
-              <span class="px-3.5 py-2 bg-blue-600/90 border border-blue-400/30 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 shadow">
-                <i data-lucide="zoom-in" class="w-4 h-4"></i> Expand Screen
-              </span>
-            </div>
-          </div>
-          <div class="p-5 space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-extrabold tracking-widest text-emerald-700 dark:text-emerald-400 uppercase bg-emerald-600/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">Mobile App UI</span>
-              <span class="text-sm text-slate-600 dark:text-slate-400 font-semibold">Active Build</span>
-            </div>
-            <h4 class="font-extrabold text-slate-950 dark:text-white text-xl">Secure Transit & User App UI</h4>
-            <p class="text-base text-slate-700 dark:text-slate-300 leading-relaxed">Live-route GPS escort rendering, SOS distress button triggers, and military-grade chat components.</p>
-            <div class="pt-3 flex items-center justify-between border-t border-slate-200 dark:border-white/5 text-sm font-semibold">
-              <span class="text-blue-600 dark:text-blue-400 flex items-center gap-1">
-                <i data-lucide="external-link" class="w-3.5 h-3.5"></i> Figma Prototype
-              </span>
-              <span class="text-slate-500 dark:text-slate-400">Updated Week 2</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Media Card 2: Security Dispatch Map System -->
-        <div class="bg-slate-100/50 dark:bg-slate-900/60 rounded-2xl overflow-hidden border border-slate-200 dark:border-white/5 flex flex-col justify-between group">
-          <div class="gallery-img-container aspect-video relative bg-slate-900 flex items-center justify-center cursor-pointer" onclick="openLightbox('assets/security_dispatch_map.png', 'High-Security Dispatch Map Web Console Dashboard')">
-            <img src="assets/security_dispatch_map.png" alt="Dispatch System Map" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300">
-              <span class="px-3.5 py-2 bg-blue-600/90 border border-blue-400/30 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 shadow">
-                <i data-lucide="zoom-in" class="w-4 h-4"></i> Expand Screen
-              </span>
-            </div>
-          </div>
-          <div class="p-5 space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-extrabold tracking-widest text-blue-700 dark:text-blue-400 uppercase bg-blue-600/10 px-2.5 py-0.5 rounded-full border border-blue-500/20">Dispatch UI</span>
-              <span class="text-sm text-slate-600 dark:text-slate-400 font-semibold">In Review</span>
-            </div>
-            <h4 class="font-extrabold text-slate-950 dark:text-white text-xl">Escort Dispatch Radar UI</h4>
-            <p class="text-base text-slate-700 dark:text-slate-300 leading-relaxed">Real-time escort location tracking, telemetry radar systems, security zone alarm logs, and instant mapping handlers.</p>
-            <div class="pt-3 flex items-center justify-between border-t border-slate-200 dark:border-white/5 text-sm font-semibold">
-              <span class="text-blue-600 dark:text-blue-400 flex items-center gap-1">
-                <i data-lucide="file-code" class="w-3.5 h-3.5"></i> Repository Commits
-              </span>
-              <span class="text-slate-500 dark:text-slate-400">Updated Week 3</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Media Card 3: Super Admin Analytics Panel -->
-        <div class="bg-slate-100/50 dark:bg-slate-900/60 rounded-2xl overflow-hidden border border-slate-200 dark:border-white/5 flex flex-col justify-between group">
-          <div class="gallery-img-container aspect-video relative bg-slate-900 flex items-center justify-center cursor-pointer" onclick="openLightbox('assets/admin_analytics.png', 'Super Admin Security Analytics & Gateway Monitoring Console')">
-            <img src="assets/admin_analytics.png" alt="Admin Dashboard Analytics" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300">
-              <span class="px-3.5 py-2 bg-blue-600/90 border border-blue-400/30 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 shadow">
-                <i data-lucide="zoom-in" class="w-4 h-4"></i> Expand Screen
-              </span>
-            </div>
-          </div>
-          <div class="p-5 space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-extrabold tracking-widest text-amber-700 dark:text-amber-400 uppercase bg-amber-600/10 px-2.5 py-0.5 rounded-full border border-amber-500/20">Admin Panel</span>
-              <span class="text-sm text-slate-600 dark:text-slate-400 font-semibold">Active Build</span>
-            </div>
-            <h4 class="font-extrabold text-slate-950 dark:text-white text-xl">Super Admin Analytics Console</h4>
-            <p class="text-base text-slate-700 dark:text-slate-300 leading-relaxed">Hardware fingerprinting checks, SMS gateway status indicators, active escort maps, and telemetry metric logs.</p>
-            <div class="pt-3 flex items-center justify-between border-t border-slate-200 dark:border-white/5 text-sm font-semibold">
-              <span class="text-blue-600 dark:text-blue-400 flex items-center gap-1">
-                <i data-lucide="link" class="w-3.5 h-3.5"></i> Branch Deployment
-              </span>
-              <span class="text-slate-500 dark:text-slate-400">Updated Week 3</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- CollinsVerse Milestone & Budget Clearance Tracker -->
-    <section class="glass-panel rounded-2xl p-6 space-y-6 bg-white dark:bg-slate-900/40">
-      <div>
-        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
-          <i data-lucide="milestone" class="w-6 h-6 text-indigo-600 dark:text-indigo-400"></i>
-          Milestone & Budget Clearance Tracker
-        </h3>
-        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Check project milestone checkpoints, release levels, and lock status corresponding to client sprint reviews.</p>
-      </div>
-
-      <!-- Roadmap Timeline Container -->
-      <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 relative z-10">
-        
-        <!-- Milestone 1 -->
-        <div class="relative glass-panel rounded-2xl p-5 bg-white dark:bg-slate-900/60 flex flex-col justify-between gap-4 border border-slate-200 dark:border-white/5" id="milestone-card-0">
-          <div class="space-y-2">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-extrabold text-emerald-700 dark:text-emerald-400 bg-emerald-600/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1">
-                <i data-lucide="check-circle" class="w-3.5 h-3.5"></i> ACTIVE / CLEAR
-              </span>
-              <span class="text-sm font-extrabold text-slate-700 dark:text-slate-300">20% Deposit</span>
-            </div>
-            <h4 class="font-bold text-slate-900 dark:text-white text-xl">Milestone 1: UI/UX & System Architecture</h4>
-            <p class="text-base text-slate-700 dark:text-slate-300 leading-relaxed">Establish base Figma structures, design wireframes, secure database schemas, and map endpoint routing setups.</p>
-          </div>
-          <div class="pt-3 border-t border-slate-200 dark:border-white/5 flex justify-between items-center text-sm font-semibold">
-            <span class="text-slate-500 dark:text-slate-400">Week 1 Verification</span>
-            <span class="text-emerald-700 dark:text-emerald-400 font-extrabold">Completed</span>
-          </div>
-        </div>
-
-        <!-- Milestone 2 -->
-        <div class="relative glass-panel rounded-2xl p-5 bg-white dark:bg-slate-900/60 flex flex-col justify-between gap-4 border border-slate-200 dark:border-white/5" id="milestone-card-1">
-          <div class="space-y-2">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-extrabold text-slate-500 dark:text-slate-400 bg-slate-500/10 border border-slate-500/20 px-2.5 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1" id="milestone-badge-1">
-                <i data-lucide="lock" class="w-3.5 h-3.5" id="milestone-icon-1"></i> LOCKED
-              </span>
-              <span class="text-sm font-extrabold text-slate-700 dark:text-slate-300">30% commitment</span>
-            </div>
-            <h4 class="font-bold text-slate-900 dark:text-white text-xl">Milestone 2: Core MVP & Alpha App Release</h4>
-            <p class="text-base text-slate-700 dark:text-slate-300 leading-relaxed">Functional driver dispatch mechanics, passenger user logins, basic mapping layout implementations, and API connections.</p>
-          </div>
-          <div class="pt-3 border-t border-slate-200 dark:border-white/5 flex justify-between items-center text-sm font-semibold">
-            <span class="text-slate-500 dark:text-slate-400">Requires Week 2 Sign-off</span>
-            <span class="text-slate-500 dark:text-slate-400 font-extrabold" id="milestone-status-1">Locked</span>
-          </div>
-        </div>
-
-        <!-- Milestone 3 -->
-        <div class="relative glass-panel rounded-2xl p-5 bg-white dark:bg-slate-900/60 flex flex-col justify-between gap-4 border border-slate-200 dark:border-white/5" id="milestone-card-2">
-          <div class="space-y-2">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-extrabold text-slate-400 bg-slate-500/10 border border-slate-500/20 px-2.5 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1" id="milestone-badge-2">
-                <i data-lucide="lock" class="w-3.5 h-3.5" id="milestone-icon-2"></i> LOCKED
-              </span>
-              <span class="text-sm font-extrabold text-slate-700 dark:text-slate-300">30% commitment</span>
-            </div>
-            <h4 class="font-bold text-slate-900 dark:text-white text-xl">Milestone 3: Security App, Admin & Telemetry</h4>
-            <p class="text-base text-slate-700 dark:text-slate-300 leading-relaxed">SMS gateway failover configuration, physical device telemetry sockets, cryptographic checks, and admin analytics dashboards.</p>
-          </div>
-          <div class="pt-3 border-t border-slate-200 dark:border-white/5 flex justify-between items-center text-sm font-semibold">
-            <span class="text-slate-500 dark:text-slate-400">Requires Week 3 Sign-off</span>
-            <span class="text-slate-500 dark:text-slate-400 font-extrabold" id="milestone-status-2">Locked</span>
-          </div>
-        </div>
-
-        <!-- Milestone 4 -->
-        <div class="relative glass-panel rounded-2xl p-5 bg-white dark:bg-slate-900/60 flex flex-col justify-between gap-4 border border-slate-200 dark:border-white/5" id="milestone-card-3">
-          <div class="space-y-2">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-extrabold text-slate-400 bg-slate-500/10 border border-slate-500/20 px-2.5 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1" id="milestone-badge-3">
-                <i data-lucide="lock" class="w-3.5 h-3.5" id="milestone-icon-3"></i> LOCKED
-              </span>
-              <span class="text-sm font-extrabold text-slate-700 dark:text-slate-300">20% commitment</span>
-            </div>
-            <h4 class="font-bold text-slate-900 dark:text-white text-xl">Milestone 4: Store Deployment & Handover</h4>
-            <p class="text-base text-slate-700 dark:text-slate-300 leading-relaxed">Penetration testing audits, final app store submittals, driver onboarding portals, and project documentation code release.</p>
-          </div>
-          <div class="pt-3 border-t border-slate-200 dark:border-white/5 flex justify-between items-center text-sm font-semibold">
-            <span class="text-slate-500 dark:text-slate-400">Requires Week 4 Sign-off</span>
-            <span class="text-slate-500 dark:text-slate-400 font-extrabold" id="milestone-status-3">Locked</span>
-          </div>
-        </div>
-
-      </div>
+    <!-- Active Weekly Sprint Report Container (Bulleted Logs & Sign-Offs) -->
+    <section id="weekly-sprint-container" class="space-y-8">
+      <!-- Injected dynamically via app.js -->
     </section>
 
   </main>
 
-  <!-- Sliding Developer Update Drawer -->
-  <div id="drawer-backdrop" class="drawer-backdrop" onclick="closeDevDrawer()"></div>
-  <aside id="dev-drawer" class="dev-drawer flex flex-col">
-    <!-- Header -->
-    <div class="px-6 py-5 border-b border-slate-300 dark:border-white/10 flex items-center justify-between bg-slate-100 dark:bg-slate-900">
-      <div class="flex items-center gap-2">
-        <i data-lucide="terminal" class="w-6 h-6 text-blue-600 dark:text-blue-400"></i>
-        <div>
-          <h3 class="font-extrabold text-lg text-slate-950 dark:text-white">Dev Inputs Panel</h3>
-          <p class="text-xs text-slate-600 dark:text-slate-400 font-semibold" id="drawer-dev-role">Updating as Dev</p>
-        </div>
-      </div>
-      <button onclick="closeDevDrawer()" class="p-1.5 rounded-lg border border-slate-300 dark:border-white/10 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition">
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
-    </div>
-
-    <!-- Scrollable Form Content -->
-    <div class="flex-grow overflow-y-auto p-6 space-y-6">
-      
-      <!-- Week Selector -->
-      <div class="space-y-2">
-        <label for="dev-week-select" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Select Sprint Week</label>
-        <select id="dev-week-select" onchange="onDevWeekChange()" class="w-full rounded-xl px-4 py-2.5 text-sm font-semibold">
-          <option value="1">Week 1 (Architecture)</option>
-          <option value="2">Week 2 (Core MVP)</option>
-          <option value="3">Week 3 (Dispatch/Telemetry)</option>
-          <option value="4">Week 4 (Audits/Handover)</option>
-        </select>
-      </div>
-
-      <!-- Engineering Role Selector -->
-      <div class="space-y-2">
-        <label for="dev-role-select" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Engineering Role to Update</label>
-        <select id="dev-role-select" onchange="onDevRoleChange()" class="w-full rounded-xl px-4 py-2.5 text-sm font-semibold">
-          <option value="0">Liam Sterling (Frontend / Mobile Lead)</option>
-          <option value="1">Dr. Cynthia Vance (Backend / Database Engineer)</option>
-          <option value="2">Marcus Chen (UI/UX Designer & Mobile Dev)</option>
-          <option value="3">Elena Rostova (Security, Maps & Telemetry Lead)</option>
-        </select>
-      </div>
-
-      <!-- Logged Hours -->
-      <div class="space-y-2">
-        <label for="dev-hours" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Logged Weekly Hours</label>
-        <input type="number" id="dev-hours" min="0" max="100" class="w-full rounded-xl px-4 py-2.5 text-sm font-semibold" placeholder="e.g. 40">
-      </div>
-
-      <!-- Tasks Status List -->
-      <div class="space-y-3">
-        <span class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Task Checklists Statuses</span>
-        <div id="drawer-tasks-container" class="space-y-3 bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-white/5 max-h-[220px] overflow-y-auto">
-          <!-- Populated dynamically -->
-        </div>
-      </div>
-
-      <!-- Add New Task -->
-      <div class="space-y-2">
-        <label for="new-task-text" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Append New Sprint Task</label>
-        <div class="flex gap-2">
-          <input type="text" id="new-task-text" class="flex-grow rounded-xl px-4 py-2.5 text-xs font-semibold" placeholder="Type new secure feature deliverable...">
-          <button onclick="addNewTask()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl transition flex items-center justify-center">
-            <i data-lucide="plus" class="w-4 h-4"></i> Add
-          </button>
-        </div>
-      </div>
-
-      <!-- Commits hashes -->
-      <div class="space-y-2">
-        <label for="dev-commits" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Git Commits (Hash:Message, line by line)</label>
-        <textarea id="dev-commits" rows="3" class="w-full rounded-xl px-4 py-3 text-xs font-mono font-semibold" placeholder="cv-f2031:Initialize auth hooks&#10;cv-f2048:Setup maps coordinates"></textarea>
-      </div>
-
-    </div>
-
-    <!-- Footer buttons -->
-    <div class="p-6 border-t border-slate-300 dark:border-white/10 bg-slate-100 dark:bg-slate-900 flex items-center gap-3">
-      <button onclick="saveDeveloperChanges()" class="flex-grow py-3 rounded-xl text-white font-bold text-xs btn-primary-glow uppercase tracking-wider flex items-center justify-center gap-2">
-        <i data-lucide="save" class="w-4 h-4"></i>
-        Save Dev Inputs
-      </button>
-      <button onclick="closeDevDrawer()" class="px-4 py-3 rounded-xl border border-slate-300 dark:border-white/10 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 font-bold text-xs uppercase tracking-wider">
-        Cancel
-      </button>
-    </div>
-  </aside>
-
-  <!-- Developer Auth Code Verification Modal -->
-  <div id="auth-modal" class="fixed inset-0 z-[100] bg-slate-950/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="glass-panel max-w-md w-full bg-white dark:bg-slate-900/95 rounded-2xl border border-slate-200 dark:border-white/10 shadow-2xl p-6 space-y-6">
-      
-      <div class="flex items-center gap-3 border-b border-slate-200 dark:border-white/5 pb-3">
-        <div class="p-2 bg-blue-600/10 text-blue-600 dark:text-blue-400 rounded-xl">
-          <i data-lucide="lock" class="w-6 h-6"></i>
-        </div>
-        <div>
-          <h3 class="font-extrabold text-lg text-slate-950 dark:text-white">Developer Credentials Verification</h3>
-          <p class="text-xs text-slate-600 dark:text-slate-400 font-semibold">Verification required for updates commit authorization.</p>
-        </div>
-      </div>
-
-      <div class="space-y-4">
-        <!-- Developer Name Text Box -->
-        <div class="space-y-2">
-          <label for="auth-dev-name" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Developer Name</label>
-          <input type="text" id="auth-dev-name" class="w-full rounded-xl px-4 py-2.5 text-sm font-semibold" placeholder="e.g. Daniel Anyamene">
-        </div>
-
-        <!-- Alphanumeric Password -->
-        <div class="space-y-2">
-          <label for="auth-password" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Security Password</label>
-          <input type="password" id="auth-password" class="w-full rounded-xl px-4 py-3 text-sm font-semibold" placeholder="Enter Security Password">
-          <p class="text-[10px] text-slate-650 dark:text-slate-400 font-semibold italic text-center">Identity Details: Daniel Anyamene (Password: CV-Daniel-2026)</p>
-        </div>
-
-        <!-- Error Feedback -->
-        <p id="auth-error" class="text-xs text-red-600 dark:text-red-400 font-bold hidden text-center uppercase tracking-wide">
-          ⚠ Verification failed: Invalid developer name or password
-        </p>
-      </div>
-
-      <div class="flex items-center gap-3 pt-2">
-        <button onclick="verifyDevPasscode()" class="flex-grow py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-xs uppercase tracking-wider transition flex items-center justify-center gap-2">
-          <i data-lucide="key-round" class="w-4 h-4"></i>
-          Verify Identity
-        </button>
-        <button onclick="closeDevAuthModal()" class="px-5 py-3 rounded-xl border border-slate-300 dark:border-white/10 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold text-xs uppercase tracking-wider transition">
-          Cancel
-        </button>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- High-Security Lightbox for screenshots -->
-  <div id="lightbox" class="fixed inset-0 z-[100] bg-slate-950/95 backdrop-blur-sm hidden flex-col items-center justify-center p-4">
-    <div class="relative max-w-4xl w-full flex flex-col items-center gap-3">
-      <button onclick="closeLightbox()" class="absolute -top-12 right-0 p-2 text-slate-400 hover:text-white bg-slate-900 border border-white/10 rounded-full focus:outline-none transition">
-        <i data-lucide="x" class="w-6 h-6"></i>
-      </button>
-      <img id="lightbox-img" src="" alt="Expanded View" class="max-h-[75vh] w-auto max-w-full rounded-lg border border-white/10 shadow-2xl">
-      <p id="lightbox-caption" class="text-sm font-semibold text-slate-300 mt-2 text-center"></p>
-    </div>
-  </div>
-
-  <!-- Corporate Footer -->
-  <footer class="mt-auto border-t border-slate-300 dark:border-white/5 bg-slate-100 dark:bg-slate-950 py-8 px-6 text-center text-xs text-slate-500 dark:text-slate-500 transition-colors">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-      <p>&copy; 2026 CollinsVerse Technologies Inc. All security and development records encrypted.</p>
+  <!-- Clean Corporate Footer -->
+  <footer class="border-t-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-6 px-6 text-center text-xs text-slate-500 dark:text-slate-500 transition-colors">
+    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>&copy; 2026 CollinsVerse Technologies Inc. Weekly Project Log Portal.</p>
       <div class="flex items-center gap-4">
-        <a href="#" class="hover:text-slate-800 dark:hover:text-slate-300 transition">Terms of Governance</a>
-        <span class="text-slate-300 dark:text-slate-800">|</span>
-        <a href="#" class="hover:text-slate-800 dark:hover:text-slate-300 transition">Data Security Protocol</a>
+        <a href="#" class="hover:underline transition">Governance Protocol</a>
+        <span>|</span>
+        <a href="#" class="hover:underline transition">Data Verification</a>
       </div>
     </div>
   </footer>
