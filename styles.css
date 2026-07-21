@@ -3,9 +3,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
-/* Accessibility Scaling: Increase base root font size by 15-20% */
+/* Accessibility Scaling: Keep standard root font scale, scale elements via utility classes */
 html {
-  font-size: 19px; /* Scales all rem units globally. Base text-base is now 19px. text-sm is ~16.6px. */
+  font-size: 16px; /* Return to original default size to prevent headers from blowing up */
   transition: background-color 0.3s ease;
 }
 
@@ -213,10 +213,11 @@ body {
   border-left: 1px solid var(--border-color);
   box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
   transform: translateX(100%);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  visibility: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s ease;
   z-index: 80;
   display: flex;
-  flex-col: col;
+  flex-direction: column;
 }
 
 .dark .dev-drawer {
@@ -226,6 +227,7 @@ body {
 
 .dev-drawer.open {
   transform: translateX(0);
+  visibility: visible;
 }
 
 /* Drawer Back overlay */
@@ -236,12 +238,14 @@ body {
   backdrop-filter: blur(4px);
   z-index: 70;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .drawer-backdrop.active {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
 }
 

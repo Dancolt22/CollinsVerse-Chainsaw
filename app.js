@@ -553,16 +553,16 @@ function renderActiveWeek() {
     if (dev.commits && dev.commits.length > 0) {
       dev.commits.forEach(commit => {
         commitsListHtml += `
-          <div class="flex items-center justify-between text-xs py-1.5 border-b border-slate-200 dark:border-white/5 last:border-b-0">
+          <div class="flex items-center justify-between text-sm py-1.5 border-b border-slate-200 dark:border-white/5 last:border-b-0">
             <span class="text-blue-600 dark:text-blue-400 font-mono font-bold hover:underline cursor-pointer flex items-center gap-1">
               <i data-lucide="git-commit" class="w-3.5 h-3.5"></i> ${commit.hash}
             </span>
-            <span class="text-slate-700 dark:text-slate-300 truncate max-w-[200px]" title="${commit.message}">${commit.message}</span>
+            <span class="text-slate-750 dark:text-slate-250 truncate max-w-[200px]" title="${commit.message}">${commit.message}</span>
           </div>
         `;
       });
     } else {
-      commitsListHtml = `<p class="text-slate-500 dark:text-slate-500 text-xs italic">No Git commits logged</p>`;
+      commitsListHtml = `<p class="text-slate-550 dark:text-slate-500 text-sm italic">No Git commits logged</p>`;
     }
 
     // Tasks list layout
@@ -590,7 +590,7 @@ function renderActiveWeek() {
               >
               <label 
                 for="task-${devIdx}-${actualIdx}" 
-                class="text-sm font-semibold text-slate-800 dark:text-slate-200 cursor-pointer select-none leading-relaxed"
+                class="text-base font-semibold text-slate-850 dark:text-slate-150 cursor-pointer select-none leading-relaxed"
               >
                 ${task.text}
               </label>
@@ -602,7 +602,7 @@ function renderActiveWeek() {
         `;
       });
     } else {
-      tasksListHtml = `<p class="text-slate-500 text-xs italic p-2">No matching deliverables found</p>`;
+      tasksListHtml = `<p class="text-slate-500 text-sm italic p-2">No matching deliverables found</p>`;
     }
 
     cardsHtml += `
@@ -617,8 +617,8 @@ function renderActiveWeek() {
                 ${dev.avatar}
               </div>
               <div>
-                <h4 class="font-extrabold text-slate-950 dark:text-white text-base leading-tight">${dev.name}</h4>
-                <p class="text-xs text-slate-600 dark:text-slate-400 font-bold">${dev.role}</p>
+                <h4 class="font-extrabold text-slate-950 dark:text-white text-xl leading-tight">${dev.name}</h4>
+                <p class="text-sm text-slate-650 dark:text-slate-350 font-bold">${dev.role}</p>
               </div>
             </div>
             
@@ -630,13 +630,13 @@ function renderActiveWeek() {
           </div>
 
           <!-- Hours & Micro Progress -->
-          <div class="flex items-center justify-between text-xs border-y border-slate-200 dark:border-white/5 py-2.5">
+          <div class="flex items-center justify-between text-sm border-y border-slate-200 dark:border-white/5 py-2.5">
             <div class="flex items-center gap-1.5 text-slate-600 dark:text-slate-400 font-semibold">
               <i data-lucide="clock" class="w-4 h-4"></i>
               <span>Hours Logged: <strong class="text-slate-900 dark:text-white font-extrabold">${dev.hoursLogged} hrs</strong></span>
             </div>
             <div class="flex items-center gap-2 font-bold">
-              <span class="text-slate-500 dark:text-slate-400">Week Progress:</span>
+              <span class="text-slate-550 dark:text-slate-350">Week Progress:</span>
               <strong class="text-blue-600 dark:text-blue-400 font-mono">${progressPct}%</strong>
             </div>
           </div>
@@ -680,7 +680,7 @@ function renderActiveWeek() {
           <h3 class="text-2xl font-black text-slate-900 dark:text-white mt-2 flex items-center gap-2">
             ${currentWeek.title} — ${currentWeek.phase}
           </h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mt-1 font-semibold">Toggling checkboxes updates deliverable check-offs. Click 'Dev Input Terminal' to commit updates.</p>
+          <p class="text-base text-slate-650 dark:text-slate-350 mt-1 font-semibold">Toggling checkboxes updates deliverable check-offs. Click 'Dev Input Terminal' to commit updates.</p>
         </div>
         <div class="flex items-center gap-4">
           <div class="text-right">
@@ -701,11 +701,11 @@ function renderActiveWeek() {
       <div class="glass-panel rounded-2xl p-6 border ${approvalCardClass} transition duration-300">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-200 dark:border-white/5 pb-4 mb-4">
           <div>
-            <h4 class="font-bold text-slate-950 dark:text-white text-base flex items-center gap-2">
+            <h4 class="font-bold text-slate-955 dark:text-white text-xl flex items-center gap-2">
               <i data-lucide="signature" class="w-5 h-5 text-blue-600 dark:text-blue-400"></i>
               Client Governance Terminal & Phase Clearance
             </h4>
-            <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 font-semibold">Client auditor portal. Sign off on week deliverables to release milestone commitment pools.</p>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mt-0.5 font-semibold">Client auditor portal. Sign off on week deliverables to release milestone commitment pools.</p>
           </div>
           <div>
             <span class="text-[10px] bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-white/10 rounded-md px-2.5 py-1 text-slate-600 dark:text-slate-400 font-mono font-bold">
@@ -723,7 +723,7 @@ function renderActiveWeek() {
               id="client-feedback" 
               rows="3" 
               placeholder="Enter sprint notes, requested modifications, or approval notes for the engineering team here..."
-              class="w-full rounded-xl bg-slate-50 dark:bg-slate-950 px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-500 font-semibold transition"
+              class="w-full rounded-xl bg-slate-50 dark:bg-slate-950 px-4 py-3 text-base text-slate-900 dark:text-white placeholder-slate-500 font-semibold transition"
             >${feedbackValue}</textarea>
           </div>
 
@@ -737,7 +737,7 @@ function renderActiveWeek() {
                   class="sr-only peer"
                 >
                 <div class="w-11 h-6 bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-600 peer-checked:after:bg-white peer-checked:after:border-emerald-300"></div>
-                <span class="ml-3 text-sm font-extrabold text-slate-700 dark:text-slate-300 select-none uppercase tracking-wider">
+                <span class="ml-3 text-base font-extrabold text-slate-700 dark:text-slate-300 select-none uppercase tracking-wider">
                   Approve Week ${currentWeek.id} Sprint Deliverables
                 </span>
               </div>
@@ -745,7 +745,7 @@ function renderActiveWeek() {
 
             <button 
               onclick="saveClientReview()"
-              class="w-full sm:w-auto px-6 py-3 rounded-xl font-bold text-xs text-white btn-primary-glow uppercase tracking-wider flex items-center justify-center gap-2"
+              class="w-full sm:w-auto px-6 py-3 rounded-xl font-bold text-sm text-white btn-primary-glow uppercase tracking-wider flex items-center justify-center gap-2"
             >
               <i data-lucide="check-square" class="w-4 h-4"></i>
               Save Governance Review
