@@ -1,439 +1,29 @@
 // CollinsVerse Technologies — Weekly Project Log Core Engine
 
-const DEFAULT_SPRINT_DATA = [
-  {
-    id: 1,
-    title: "Week 1",
-    phase: "Phase 1: UI/UX & Architecture Design",
-    approved: true,
-    feedback: "Architecture layouts and initial database relational tables verified by the advisory board. Relational DB and SMS gateway schemas approved.",
+const DEFAULT_SPRINT_DATA = [];
+for (let i = 1; i <= 8; i++) {
+  DEFAULT_SPRINT_DATA.push({
+    id: i,
+    title: `Week ${i}`,
+    phase: i === 1 ? "Phase 1: UI/UX & Architecture Design" :
+           i === 2 ? "Phase 2: Core MVP Integration" :
+           i === 3 ? "Phase 3: Dispatch & Telemetry" :
+           i === 4 ? "Phase 4: Audits & Midterm Review" :
+           i === 5 ? "Phase 5: Extended Features & API Linkage" :
+           i === 6 ? "Phase 6: Integration Testing & Security Hardening" :
+           i === 7 ? "Phase 7: Performance Optimization" :
+                     "Phase 8: Production Release Checklist",
+    approved: i === 1 ? true : false,
+    feedback: i === 1 ? "Architecture layouts and initial database relational tables verified by the advisory board. Relational DB and SMS gateway schemas approved." : "",
     developers: [
-      {
-        name: "Daniel Anyamene",
-        role: "Frontend",
-        tasks: [
-          "Initialized React Native repository template with TypeScript guidelines",
-          "Configured local encrypted storage partitions for device biometrics storage keys"
-        ],
-        proof: { label: "Code Repository Branch", url: "#" }
-      },
-      {
-        name: "Victor Chukwuemeka",
-        role: "Backend",
-        tasks: [
-          "Drafted PostgreSQL database relational schemas for users and active coordinates logs",
-          "Dockerized auth microservice running JWT validator gateways"
-        ],
-        proof: { label: "Relational Database Diagram", url: "#" }
-      },
-      {
-        name: "Michael Chidiebere",
-        role: "Frontend",
-        tasks: [
-          "Linked baseline mapping view layout hooks with Google Maps SDK API keys",
-          "Constructed navigation bar tabs matching corporate slate theme layout"
-        ],
-        proof: { label: "Client Portal Repo", url: "#" }
-      },
-      {
-        name: "Benjamin Olutiriko",
-        role: "UI/UX developer",
-        tasks: [
-          "Designed high-fidelity Figma layouts for high-security rider onboarding portal",
-          "Constructed color palette style sheets based on corporate slate identity"
-        ],
-        proof: { label: "Figma Interactive Prototypes", url: "#" }
-      },
-      {
-        name: "OluwaFemi Abimbola",
-        role: "Cyber Security",
-        tasks: [
-          "Researched hardware fingerprint check signatures for validation protocols",
-          "Conducted transit route GPS telemetry coordinates latency performance tests"
-        ],
-        proof: { label: "Security System Architecture Docs", url: "#" }
-      }
+      { name: "Daniel Anyamene", role: "Frontend", tasks: [], goals: [], proof: { label: "Verification Repository", url: "#" } },
+      { name: "Victor Chukwuemeka", role: "Backend", tasks: [], goals: [], proof: { label: "Verification Repository", url: "#" } },
+      { name: "Michael Chidiebere", role: "Frontend", tasks: [], goals: [], proof: { label: "Verification Repository", url: "#" } },
+      { name: "Benjamin Olutiriko", role: "UI/UX developer", tasks: [], goals: [], proof: { label: "Figma Designs", url: "#" } },
+      { name: "OluwaFemi Abimbola", role: "Cyber Security", tasks: [], goals: [], proof: { label: "Security Reports", url: "#" } }
     ]
-  },
-  {
-    id: 2,
-    title: "Week 2",
-    phase: "Phase 2: Core MVP Integration",
-    approved: false,
-    feedback: "",
-    developers: [
-      {
-        name: "Daniel Anyamene",
-        role: "Frontend",
-        tasks: [
-          "Coded passenger biometric authorization passcode locks screen layout",
-          "Programmed offline cache data wipe algorithms on app suspend events"
-        ],
-        proof: { label: "Mobile App Demo Video", url: "#" }
-      },
-      {
-        name: "Victor Chukwuemeka",
-        role: "Backend",
-        tasks: [
-          "Built coordinate message ingestion hooks inside dispatcher tracking service",
-          "Set up WebSockets handlers broadcasting driver location feeds to dispatcher"
-        ],
-        proof: { label: "WebSockets Specs", url: "#" }
-      },
-      {
-        name: "Michael Chidiebere",
-        role: "Frontend",
-        tasks: [
-          "Implemented live route updates overlays drawing GPS coordinates paths on map views",
-          "Integrated passenger sidebar dashboard state controls"
-        ],
-        proof: { label: "Mobile Maps View Log", url: "#" }
-      },
-      {
-        name: "Benjamin Olutiriko",
-        role: "UI/UX developer",
-        tasks: [
-          "Designed driver-app active transit escort maps view wireframes",
-          "Prototypes physical gesture triggers for emergency SOS distress button triggers"
-        ],
-        proof: { label: "Figma Design Assets Export", url: "#" }
-      },
-      {
-        name: "OluwaFemi Abimbola",
-        role: "Cyber Security",
-        tasks: [
-          "Coded secure socket coordinate listeners checking telemetry feeds validity",
-          "Written hardware checksum checks verifying mobile device binary signatures"
-        ],
-        proof: { label: "Device Handshake Specs", url: "#" }
-      }
-    ]
-  },
-  {
-    id: 3,
-    title: "Week 3",
-    phase: "Phase 3: Dispatch & Telemetry",
-    approved: false,
-    feedback: "",
-    developers: [
-      {
-        name: "Daniel Anyamene",
-        role: "Frontend",
-        tasks: [
-          "Integrated native Face-ID/Touch-ID API triggers on PIN verification modals",
-          "Resolved Google Maps API load coordinates caching latency conflicts"
-        ],
-        proof: { label: "TestFlight Alpha Build (v0.3.0)", url: "#" }
-      },
-      {
-        name: "Victor Chukwuemeka",
-        role: "Backend",
-        tasks: [
-          "Implemented AES 256-bit cryptography handlers encrypting transit data before DB insertion",
-          "Set up automated coordinate logging audits monitoring driver connectivity states"
-        ],
-        proof: { label: "API Cryptographic Key Specs", url: "#" }
-      },
-      {
-        name: "Michael Chidiebere",
-        role: "Frontend",
-        tasks: [
-          "Linked driver active escorts panel displaying dispatch coordinate notifications",
-          "Coded custom biometric lock verification overlay triggers"
-        ],
-        proof: { label: "Frontend Integration Branch", url: "#" }
-      },
-      {
-        name: "Benjamin Olutiriko",
-        role: "UI/UX developer",
-        tasks: [
-          "Refined web dispatcher layout grids optimized for desktop admin view guidelines",
-          "Incorporate client review comments on button contrast and layout margins"
-        ],
-        proof: { label: "Figma Sprint 3 Assets", url: "#" }
-      },
-      {
-        name: "OluwaFemi Abimbola",
-        role: "Cyber Security",
-        tasks: [
-          "Integrated physical device hardware checks into the React Native mobile codebase",
-          "Conducted network penetration test audits against active staging REST API hosts"
-        ],
-        proof: { label: "Security & Penetration Audit Report", url: "#" }
-      }
-    ]
-  },
-  {
-    id: 4,
-    title: "Week 4",
-    phase: "Phase 4: Audits & Midterm Review",
-    approved: false,
-    feedback: "",
-    developers: [
-      {
-        name: "Daniel Anyamene",
-        role: "Frontend",
-        tasks: [
-          "Conducted manual load and memory leaks checks on iOS and Android test systems",
-          "Verified offline caching database encrypts files correctly when device goes offline"
-        ],
-        proof: { label: "App Handover Files", url: "#" }
-      },
-      {
-        name: "Victor Chukwuemeka",
-        role: "Backend",
-        tasks: [
-          "Prepared postgres cloud production servers configuration metrics",
-          "Conducted backend performance tests under load up to 10k concurrent connections"
-        ],
-        proof: { label: "System Handover Documentation", url: "#" }
-      },
-      {
-        name: "Michael Chidiebere",
-        role: "Frontend",
-        tasks: [
-          "Prepared build release scripts for Apple App Store and Google Play console submittals",
-          "Polished dispatcher admin viewport sizing constraints across all browser sizes"
-        ],
-        proof: { label: "App Build Logs", url: "#" }
-      },
-      {
-        name: "Benjamin Olutiriko",
-        role: "UI/UX developer",
-        tasks: [
-          "Assembled ultimate exported Figma design specifications guide booklet",
-          "Verified mobile layouts display correctly on low-resolution smaller screens"
-        ],
-        proof: { label: "Figma Handover Specs", url: "#" }
-      },
-      {
-        name: "OluwaFemi Abimbola",
-        role: "Cyber Security",
-        tasks: [
-          "Completed vulnerability scans on backend docker images and code modules",
-          "Deployed fallback SMS gateway to production redundancy instances"
-        ],
-        proof: { label: "Security Handover Guidelines", url: "#" }
-      }
-    ]
-  },
-  {
-    id: 5,
-    title: "Week 5",
-    phase: "Phase 5: Extended Features & API Linkage",
-    approved: false,
-    feedback: "",
-    developers: [
-      {
-        name: "Daniel Anyamene",
-        role: "Frontend",
-        tasks: [
-          "Implemented user profile edit view layouts and theme settings selectors",
-          "Coded interactive escort trip details slider controls"
-        ],
-        proof: { label: "Profile UI Repository", url: "#" }
-      },
-      {
-        name: "Victor Chukwuemeka",
-        role: "Backend",
-        tasks: [
-          "Built API endpoint routing logs for live coordinate maps tracker feed",
-          "Optimized spatial telemetry indexes inside PostgreSQL tables"
-        ],
-        proof: { label: "API Maps Log specs", url: "#" }
-      },
-      {
-        name: "Michael Chidiebere",
-        role: "Frontend",
-        tasks: [
-          "Linked driver transit tracking map updates on WebSockets event relays",
-          "Resolved passenger location display timing lag exceptions"
-        ],
-        proof: { label: "WebSockets Client Logs", url: "#" }
-      },
-      {
-        name: "Benjamin Olutiriko",
-        role: "UI/UX developer",
-        tasks: [
-          "Completed dispatcher interface audit layouts and icons styles specs",
-          "Exported assets and fonts specifications for developers"
-        ],
-        proof: { label: "Figma Interface Audit Specs", url: "#" }
-      },
-      {
-        name: "OluwaFemi Abimbola",
-        role: "Cyber Security",
-        tasks: [
-          "Conducted security review checkups on socket payload sanitizers",
-          "Configured OAuth 2.0 auth key storage key partitions"
-        ],
-        proof: { label: "Security Keys Storage Docs", url: "#" }
-      }
-    ]
-  },
-  {
-    id: 6,
-    title: "Week 6",
-    phase: "Phase 6: Integration Testing & Security Hardening",
-    approved: false,
-    feedback: "",
-    developers: [
-      {
-        name: "Daniel Anyamene",
-        role: "Frontend",
-        tasks: [
-          "Integrated push notification service listeners checking transit state changes",
-          "Programmed local storage clean wipes for passive biometric logs"
-        ],
-        proof: { label: "Push Notification Handlers", url: "#" }
-      },
-      {
-        name: "Victor Chukwuemeka",
-        role: "Backend",
-        tasks: [
-          "Implemented fallback Redis task queues handling offline user message relays",
-          "Set up backend Prometheus logging dashboards on staging"
-        ],
-        proof: { label: "Redis Fallback Configs", url: "#" }
-      },
-      {
-        name: "Michael Chidiebere",
-        role: "Frontend",
-        tasks: [
-          "Linked user emergency SOS panel widget overlay display logic",
-          "Wrote unit test coverage for dispatcher grid scroll helpers"
-        ],
-        proof: { label: "Unit Test Logs", url: "#" }
-      },
-      {
-        name: "Benjamin Olutiriko",
-        role: "UI/UX developer",
-        tasks: [
-          "Designed passenger biometrics verification modal layout screens",
-          "Completed accessibility audits of contrast ratios on mobile dark theme"
-        ],
-        proof: { label: "Biometric Layout Designs", url: "#" }
-      },
-      {
-        name: "OluwaFemi Abimbola",
-        role: "Cyber Security",
-        tasks: [
-          "Integrated transit payload checksum verification routines in API router",
-          "Executed SQL injection audits on dispatcher booking queries"
-        ],
-        proof: { label: "SQL Injection Audit Report", url: "#" }
-      }
-    ]
-  },
-  {
-    id: 7,
-    title: "Week 7",
-    phase: "Phase 7: Performance Optimization",
-    approved: false,
-    feedback: "",
-    developers: [
-      {
-        name: "Daniel Anyamene",
-        role: "Frontend",
-        tasks: [
-          "Resolved React Native memory leaks inside telemetry state listener hooks",
-          "Polished tab switching transition performance on low-end Androids"
-        ],
-        proof: { label: "Mobile Layout Fixes Branch", url: "#" }
-      },
-      {
-        name: "Victor Chukwuemeka",
-        role: "Backend",
-        tasks: [
-          "Configured production spatial clustering parameters inside PostgreSQL database",
-          "Optimized WebSockets socket pool concurrency handles under 10k connections"
-        ],
-        proof: { label: "WS Concurrency Specs", url: "#" }
-      },
-      {
-        name: "Michael Chidiebere",
-        role: "Frontend",
-        tasks: [
-          "Implemented custom layout wrapper for weekly sprint feedback input forms",
-          "Polished dark theme toggle animations and scroll velocity properties"
-        ],
-        proof: { label: "UI Polish Logs", url: "#" }
-      },
-      {
-        name: "Benjamin Olutiriko",
-        role: "UI/UX developer",
-        tasks: [
-          "Drafted final layout checklist guides for executive review approvals",
-          "Verified visual styles on low-resolution smaller screens"
-        ],
-        proof: { label: "Visual Style Manual", url: "#" }
-      },
-      {
-        name: "OluwaFemi Abimbola",
-        role: "Cyber Security",
-        tasks: [
-          "Conducted full security code audits verifying TLS encryption protocols",
-          "Configured API rate limiter rules blockading socket spam vectors"
-        ],
-        proof: { label: "Rate Limiter Code Configs", url: "#" }
-      }
-    ]
-  },
-  {
-    id: 8,
-    title: "Week 8",
-    phase: "Phase 8: Production Release Checklist",
-    approved: false,
-    feedback: "",
-    developers: [
-      {
-        name: "Daniel Anyamene",
-        role: "Frontend",
-        tasks: [
-          "Prepared React Native App Store build binaries and release configurations",
-          "Conducted offline state data recovery integration test validations"
-        ],
-        proof: { label: "App Release Handover", url: "#" }
-      },
-      {
-        name: "Victor Chukwuemeka",
-        role: "Backend",
-        tasks: [
-          "Assembled postgres database spatial replica servers configuration logs",
-          "Drafted backend architectural handover documents for engineering leads"
-        ],
-        proof: { label: "Database Handover Log", url: "#" }
-      },
-      {
-        name: "Michael Chidiebere",
-        role: "Frontend",
-        tasks: [
-          "Polished dispatcher admin viewport sizing constraints across all browser sizes",
-          "Verified modal click behavior on high-refresh-rate layouts"
-        ],
-        proof: { label: "Layout Handover Mocks", url: "#" }
-      },
-      {
-        name: "Benjamin Olutiriko",
-        role: "UI/UX developer",
-        tasks: [
-          "Assembled final Figma design files handoff specs booklet",
-          "Reviewed layout elements against corporate brand book guidelines"
-        ],
-        proof: { label: "Figma Handoff Booklet", url: "#" }
-      },
-      {
-        name: "OluwaFemi Abimbola",
-        role: "Cyber Security",
-        tasks: [
-          "Conducted ultimate penetration audit tests on active staging REST API instances",
-          "Set up automated security scanners running docker container vulnerability checks"
-        ],
-        proof: { label: "Ultimate Security Penetration Audit", url: "#" }
-      }
-    ]
-  }
-];
+  });
+}
 
 // Fallback high-quality demonstration commit logs mapped to the 5 team members
 const MOCK_COMMITS = [
@@ -548,12 +138,19 @@ function updateThemeIcon(theme) {
   if (window.lucide) window.lucide.createIcons();
 }
 
-// Local Storage data sync - Version 4 cleans up any stale structures
+// Local Storage data sync - Version 5 clears task templates and initiates goals checklist
 function loadSprintData() {
-  const stored = localStorage.getItem("collinsverse_sprint_data_v4");
+  const stored = localStorage.getItem("collinsverse_sprint_data_v5");
   if (stored) {
     try {
       sprintData = JSON.parse(stored);
+      // Self-heal loaded sprint elements
+      sprintData.forEach(week => {
+        week.developers.forEach(dev => {
+          dev.tasks = dev.tasks || [];
+          dev.goals = dev.goals || [];
+        });
+      });
     } catch (e) {
       console.error("Local data parse failed, loading default project logs.", e);
       sprintData = JSON.parse(JSON.stringify(DEFAULT_SPRINT_DATA));
@@ -565,7 +162,7 @@ function loadSprintData() {
 }
 
 function saveSprintData() {
-  localStorage.setItem("collinsverse_sprint_data_v4", JSON.stringify(sprintData));
+  localStorage.setItem("collinsverse_sprint_data_v5", JSON.stringify(sprintData));
 }
 
 // Fetch GitHub commits via REST API
@@ -691,46 +288,11 @@ function addNewWeek() {
     approved: false,
     feedback: "",
     developers: [
-      {
-        name: "Daniel Anyamene",
-        role: "Frontend",
-        tasks: [
-          "Sprint week initialized. Custom front-end client deliverables pending backlog prioritization."
-        ],
-        proof: { label: "Verification Repository", url: "#" }
-      },
-      {
-        name: "Victor Chukwuemeka",
-        role: "Backend",
-        tasks: [
-          "Sprint week initialized. Backend API and server-side logs pending sprint planning."
-        ],
-        proof: { label: "Verification Repository", url: "#" }
-      },
-      {
-        name: "Michael Chidiebere",
-        role: "Frontend",
-        tasks: [
-          "Sprint week initialized. User interface component updates pending sprint planning."
-        ],
-        proof: { label: "Verification Repository", url: "#" }
-      },
-      {
-        name: "Benjamin Olutiriko",
-        role: "UI/UX developer",
-        tasks: [
-          "Sprint week initialized. Interactive design mocks mapping pending user feedback review."
-        ],
-        proof: { label: "Figma Designs", url: "#" }
-      },
-      {
-        name: "OluwaFemi Abimbola",
-        role: "Cyber Security",
-        tasks: [
-          "Sprint week initialized. Security penetration audits pending environment release updates."
-        ],
-        proof: { label: "Security Reports", url: "#" }
-      }
+      { name: "Daniel Anyamene", role: "Frontend", tasks: [], goals: [], proof: { label: "Verification Repository", url: "#" } },
+      { name: "Victor Chukwuemeka", role: "Backend", tasks: [], goals: [], proof: { label: "Verification Repository", url: "#" } },
+      { name: "Michael Chidiebere", role: "Frontend", tasks: [], goals: [], proof: { label: "Verification Repository", url: "#" } },
+      { name: "Benjamin Olutiriko", role: "UI/UX developer", tasks: [], goals: [], proof: { label: "Figma Designs", url: "#" } },
+      { name: "OluwaFemi Abimbola", role: "Cyber Security", tasks: [], goals: [], proof: { label: "Security Reports", url: "#" } }
     ]
   };
 
@@ -775,6 +337,38 @@ function selectWeek(weekId) {
   renderActiveWeek();
 }
 
+// Interactive Goals checklist additions and completions
+function createWeeklyGoal(devIdx) {
+  const goalText = prompt("Enter new weekly goal / task:");
+  if (!goalText || goalText.trim().length === 0) return;
+  
+  const currentWeek = sprintData.find(w => w.id === activeWeekId);
+  if (currentWeek && currentWeek.developers[devIdx]) {
+    const dev = currentWeek.developers[devIdx];
+    dev.goals = dev.goals || [];
+    dev.goals.push(goalText.trim());
+    saveSprintData();
+    renderActiveWeek();
+    showSystemAlert("New goal added successfully!");
+  }
+}
+
+function completeGoal(devIdx, goalIdx) {
+  const currentWeek = sprintData.find(w => w.id === activeWeekId);
+  if (currentWeek && currentWeek.developers[devIdx]) {
+    const dev = currentWeek.developers[devIdx];
+    dev.goals = dev.goals || [];
+    const completedGoal = dev.goals.splice(goalIdx, 1)[0];
+    
+    dev.tasks = dev.tasks || [];
+    dev.tasks.push(completedGoal);
+    
+    saveSprintData();
+    renderActiveWeek();
+    showSystemAlert(`Goal completed and logged!`);
+  }
+}
+
 // Render dynamic developer cards & sign-off loops
 function renderActiveWeek() {
   const container = document.getElementById("weekly-sprint-container");
@@ -789,9 +383,30 @@ function renderActiveWeek() {
   currentWeek.developers.forEach((dev, devIdx) => {
     // Generate tasks bullet points
     let tasksBullets = "";
-    dev.tasks.forEach(task => {
-      tasksBullets += `<li class="relative pl-6 before:content-['•'] before:absolute before:left-1 before:text-slate-450 dark:before:text-slate-600 font-normal text-slate-750 dark:text-slate-300">${task}</li>`;
-    });
+    if (dev.tasks && dev.tasks.length > 0) {
+      dev.tasks.forEach(task => {
+        tasksBullets += `<li class="relative pl-6 before:content-['•'] before:absolute before:left-1 before:text-slate-450 dark:before:text-slate-600 font-normal text-slate-750 dark:text-slate-300">${task}</li>`;
+      });
+    } else {
+      tasksBullets = `<li class="text-xs text-slate-450 dark:text-slate-500 italic pl-0 before:content-none">No tasks logged yet for this week</li>`;
+    }
+
+    // Generate weekly goals checklist
+    let goalsHtml = "";
+    if (dev.goals && dev.goals.length > 0) {
+      dev.goals.forEach((goal, goalIdx) => {
+        goalsHtml += `
+          <div onclick="completeGoal(${devIdx}, ${goalIdx})" class="group flex items-start gap-2.5 p-2.5 rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-800 hover:border-blue-500/50 hover:bg-slate-50 dark:hover:bg-slate-900/30 cursor-pointer transition">
+            <span class="mt-0.5 w-4 h-4 rounded border-2 border-slate-350 dark:border-slate-750 group-hover:border-blue-500 flex items-center justify-center flex-shrink-0 transition bg-white dark:bg-slate-950">
+              <i data-lucide="check" class="w-3 h-3 text-blue-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition"></i>
+            </span>
+            <span class="text-sm font-medium text-slate-750 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">${goal}</span>
+          </div>
+        `;
+      });
+    } else {
+      goalsHtml = `<p class="text-xs text-slate-400 dark:text-slate-500 italic">No active goals. Click below to create one.</p>`;
+    }
 
     // Filter GitHub API commits assigned to this developer
     const devCommits = githubCommits.filter(c => c.devIndex === devIdx);
@@ -831,24 +446,43 @@ function renderActiveWeek() {
     const isLastOdd = (devIdx === currentWeek.developers.length - 1) && (currentWeek.developers.length % 2 !== 0);
     const cardColSpan = isLastOdd ? "md:col-span-2" : "";
 
+    // Split name onto two lines (first and last stacked vertically) to guarantee perfect alignments
+    const nameParts = dev.name.split(" ");
+    const firstName = nameParts[0] || "";
+    const lastName = nameParts.slice(1).join(" ") || "";
+
     devCardsHtml += `
       <div class="document-card flip-card flex flex-col justify-between gap-4 ${cardColSpan}" style="animation-delay: ${(devIdx + 1) * 100}ms">
         <div class="space-y-4">
           <!-- Developer Profile & Role -->
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b-2 border-slate-100 dark:border-slate-800 pb-3">
+          <div class="flex flex-row items-start justify-between gap-2 border-b-2 border-slate-100 dark:border-slate-800 pb-3">
             <div>
-              <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">${dev.name}</h3>
-              <p class="text-xs sm:text-sm font-normal text-slate-500 dark:text-slate-450">${dev.role}</p>
+              <h3 class="text-base sm:text-lg font-bold leading-tight text-slate-900 dark:text-white">
+                ${firstName}<br>${lastName}
+              </h3>
+              <p class="text-xs sm:text-sm font-semibold text-slate-550 dark:text-slate-400 mt-1">${dev.role}</p>
             </div>
-            <div>
-              <span class="text-[10px] sm:text-xs font-semibold bg-slate-100 dark:bg-slate-900 text-slate-655 dark:text-slate-350 border border-slate-200 dark:border-slate-800 px-3 py-1 rounded-md">
+            <div class="flex-shrink-0">
+              <span class="text-[9px] sm:text-xs font-semibold bg-slate-100 dark:bg-slate-900 text-slate-655 dark:text-slate-350 border border-slate-200 dark:border-slate-800 px-2 py-1 rounded-md">
                 Verification Active
               </span>
             </div>
           </div>
 
-          <!-- Completed Work Bulletins -->
+          <!-- Weekly Goals Checklist -->
           <div class="space-y-2">
+            <span class="text-[11px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-widest block">Weekly Goals Checklist</span>
+            <div class="space-y-2">
+              ${goalsHtml}
+            </div>
+            <button onclick="createWeeklyGoal(${devIdx})" class="mt-2.5 w-full flex items-center justify-center gap-1.5 py-2 px-3 border-2 border-slate-200 dark:border-slate-800 hover:border-slate-450 dark:hover:border-slate-600 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 transition">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+              Create Weekly Goal
+            </button>
+          </div>
+
+          <!-- Completed Tasks Log -->
+          <div class="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800">
             <span class="text-[11px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-widest block">Completed Tasks Log</span>
             <ul class="space-y-2 text-base">
               ${tasksBullets}
