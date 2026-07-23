@@ -490,7 +490,7 @@ function renderActiveWeek() {
     }
 
     devCardsHtml += `
-      <div class="document-card flex flex-col justify-between gap-4">
+      <div class="document-card flip-card flex flex-col justify-between gap-4" style="animation-delay: ${(devIdx + 1) * 100}ms">
         <div class="space-y-4">
           <!-- Developer Profile & Role -->
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b-2 border-slate-100 dark:border-slate-800 pb-3">
@@ -557,7 +557,7 @@ function renderActiveWeek() {
     <div class="week-tab-content space-y-8">
       
       <!-- Sprint details metadata header -->
-      <div class="bg-slate-50 dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div class="bg-slate-50 dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 flip-card">
         <div>
           <span class="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-widest block">Active View Details</span>
           <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-1">${currentWeek.title} Log — ${currentWeek.phase}</h2>
@@ -578,7 +578,7 @@ function renderActiveWeek() {
       </div>
 
       <!-- Simple Weekly Sign-Off Box -->
-      <div class="document-card space-y-4">
+      <div class="document-card flip-card space-y-4" style="animation-delay: 500ms">
         <div class="border-b-2 border-slate-100 dark:border-slate-800 pb-3">
           <h3 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
             <i data-lucide="signature" class="w-5 h-5 text-slate-400"></i>
