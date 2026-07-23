@@ -420,7 +420,7 @@ function renderWeeksTimeline() {
       : `<span class="flex items-center gap-1 text-[10px] sm:text-[11px] font-medium text-slate-400 dark:text-slate-500 uppercase bg-slate-50 dark:bg-slate-900 px-2 py-0.5 rounded border border-slate-300/30">Pending</span>`;
 
     const tab = document.createElement("button");
-    tab.className = `flex-grow sm:flex-grow-0 flex items-center justify-between gap-4 px-3 py-2 sm:px-5 sm:py-3 border-2 rounded-xl text-sm sm:text-base ${borderStyle} ${bgStyle} transition duration-150`;
+    tab.className = `flex-grow md:flex-grow-0 w-auto md:w-full flex items-center justify-between gap-4 px-3 py-2 sm:px-4 sm:py-3 border-2 rounded-xl text-sm sm:text-base ${borderStyle} ${bgStyle} transition duration-150`;
     tab.onclick = () => selectWeek(week.id);
     tab.innerHTML = `
       <span class="tracking-tight">${week.title}</span>
