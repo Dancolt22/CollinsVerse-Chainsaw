@@ -677,6 +677,12 @@ function renderWeeksTimeline() {
 }
 
 function addNewWeek() {
+  const enteredPass = prompt("Enter Security Passcode to Add Sprint Week:");
+  if (enteredPass !== "godrive2026") {
+    showSystemAlert("Access Denied: Invalid security passcode!");
+    return;
+  }
+
   const nextId = sprintData.length > 0 ? Math.max(...sprintData.map(w => w.id)) + 1 : 1;
   const newWeek = {
     id: nextId,
@@ -733,6 +739,34 @@ function addNewWeek() {
   renderWeeksTimeline();
   selectWeek(nextId);
   showSystemAlert(`Week ${nextId} created successfully!`);
+}
+
+function deleteActiveWeek() {
+  if (sprintData.length <= 1) {
+    showSystemAlert("Cannot delete the last remaining week log!");
+    return;
+  }
+  
+  const enteredPass = prompt("Enter Security Passcode to Delete Active Week:");
+  if (enteredPass !== "godrive2026") {
+    showSystemAlert("Access Denied: Invalid security passcode!");
+    return;
+  }
+
+  const targetIndex = sprintData.findIndex(w => w.id === activeWeekId);
+  if (targetIndex !== -1) {
+    const deletedTitle = sprintData[targetIndex].title;
+    sprintData.splice(targetIndex, 1);
+    saveSprintData();
+
+    // Select the nearest remaining week
+    const newActiveIndex = Math.max(0, targetIndex - 1);
+    activeWeekId = sprintData[newActiveIndex].id;
+
+    renderWeeksTimeline();
+    renderActiveWeek();
+    showSystemAlert(`${deletedTitle} deleted successfully!`);
+  }
 }
 
 function selectWeek(weekId) {
@@ -870,7 +904,11 @@ function renderActiveWeek() {
           <span class="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-widest block">Active View Details</span>
           <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-1">${currentWeek.title} Log — ${currentWeek.phase}</h2>
         </div>
-        <div>
+        <div class="flex items-center gap-2.5">
+          <button onclick="deleteActiveWeek()" class="px-3 py-1.5 rounded-md text-xs font-bold bg-red-50 hover:bg-red-100 dark:bg-red-950/20 dark:hover:bg-red-950/50 border border-red-200 dark:border-red-900/50 text-red-650 dark:text-red-400 uppercase transition tracking-wider flex items-center gap-1.5" title="Delete this week">
+            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+            Delete Week
+          </button>
           <span class="text-[10px] sm:text-xs font-semibold bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 px-3 py-1.5 rounded-md uppercase font-mono tracking-wider">
             Report Ready
           </span>
