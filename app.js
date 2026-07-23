@@ -6,44 +6,49 @@ const DEFAULT_SPRINT_DATA = [
     title: "Week 1",
     phase: "Phase 1: UI/UX & Architecture Design",
     approved: true,
-    feedback: "Architecture layout documents and initial database relational tables verified by the advisory board. Relational DB and SMS gateway schemas approved.",
+    feedback: "Architecture layouts and initial database relational tables verified by the advisory board. Relational DB and SMS gateway schemas approved.",
     developers: [
       {
-        name: "Victor",
-        role: "UI/UX Lead",
-        tasks: [
-          "Designed high-fidelity Figma layouts for high-security rider onboarding portal",
-          "Created dispatcher dashboard navigation controls mapping active escorts grid",
-          "Constructed color palette style sheets based on corporate slate identity"
-        ],
-        proof: { label: "Figma Interactive Prototypes", url: "#" }
-      },
-      {
-        name: "Dan",
-        role: "Mobile App Lead",
+        name: "Daniel Anyamene",
+        role: "Frontend",
         tasks: [
           "Initialized React Native repository template with TypeScript guidelines",
-          "Linked baseline mapping view layout hooks with Google Maps SDK API keys",
           "Configured local encrypted storage partitions for device biometrics storage keys"
         ],
         proof: { label: "Code Repository Branch", url: "#" }
       },
       {
-        name: "Developer 3",
-        role: "Backend & Database Engineer",
+        name: "Victor Chukwuemeka",
+        role: "Backend",
         tasks: [
           "Drafted PostgreSQL database relational schemas for users and active coordinates logs",
-          "Dockerized auth microservice running JWT validator gateways",
-          "Configured Redis pub/sub queue infrastructure for fast dispatch message routes"
+          "Dockerized auth microservice running JWT validator gateways"
         ],
         proof: { label: "Relational Database Diagram", url: "#" }
       },
       {
-        name: "Developer 4",
-        role: "Security & Maps Lead",
+        name: "Michael Chidiebere",
+        role: "Frontend",
+        tasks: [
+          "Linked baseline mapping view layout hooks with Google Maps SDK API keys",
+          "Constructed navigation bar tabs matching corporate slate theme layout"
+        ],
+        proof: { label: "Client Portal Repo", url: "#" }
+      },
+      {
+        name: "Benjamin Olutiriko",
+        role: "UI/UX developer",
+        tasks: [
+          "Designed high-fidelity Figma layouts for high-security rider onboarding portal",
+          "Constructed color palette style sheets based on corporate slate identity"
+        ],
+        proof: { label: "Figma Interactive Prototypes", url: "#" }
+      },
+      {
+        name: "OluwaFemi Abimbola",
+        role: "Cyber Security",
         tasks: [
           "Researched hardware fingerprint check signatures for validation protocols",
-          "Drafted SMS gateway fallbacks schema using Twilio and clean relays",
           "Conducted transit route GPS telemetry coordinates latency performance tests"
         ],
         proof: { label: "Security System Architecture Docs", url: "#" }
@@ -58,44 +63,49 @@ const DEFAULT_SPRINT_DATA = [
     feedback: "",
     developers: [
       {
-        name: "Victor",
-        role: "UI/UX Lead",
-        tasks: [
-          "Designed driver-app active transit escort maps view wireframes",
-          "Prototypes physical gesture triggers for emergency SOS distress button triggers",
-          "Completed accessibility review of colors and card layout sizes for senior readability"
-        ],
-        proof: { label: "Figma Design Assets Export", url: "#" }
-      },
-      {
-        name: "Dan",
-        role: "Mobile App Lead",
+        name: "Daniel Anyamene",
+        role: "Frontend",
         tasks: [
           "Coded passenger biometric authorization passcode locks screen layout",
-          "Implemented live route updates overlays drawing GPS coordinates paths on map views",
           "Programmed offline cache data wipe algorithms on app suspend events"
         ],
         proof: { label: "Mobile App Demo Video", url: "#" }
       },
       {
-        name: "Developer 3",
-        role: "Backend & Database Engineer",
+        name: "Victor Chukwuemeka",
+        role: "Backend",
         tasks: [
           "Built coordinate message ingestion hooks inside dispatcher tracking service",
-          "Configured coordinates database indexes handling up to 5,000 requests per second",
           "Set up WebSockets handlers broadcasting driver location feeds to dispatcher"
         ],
-        proof: { label: "Dispatcher WebSockets Specs", url: "#" }
+        proof: { label: "WebSockets Specs", url: "#" }
       },
       {
-        name: "Developer 4",
-        role: "Security & Maps Lead",
+        name: "Michael Chidiebere",
+        role: "Frontend",
+        tasks: [
+          "Implemented live route updates overlays drawing GPS coordinates paths on map views",
+          "Integrated passenger sidebar dashboard state controls"
+        ],
+        proof: { label: "Mobile Maps View Log", url: "#" }
+      },
+      {
+        name: "Benjamin Olutiriko",
+        role: "UI/UX developer",
+        tasks: [
+          "Designed driver-app active transit escort maps view wireframes",
+          "Prototypes physical gesture triggers for emergency SOS distress button triggers"
+        ],
+        proof: { label: "Figma Design Assets Export", url: "#" }
+      },
+      {
+        name: "OluwaFemi Abimbola",
+        role: "Cyber Security",
         tasks: [
           "Coded secure socket coordinate listeners checking telemetry feeds validity",
-          "Written hardware checksum checks verifying mobile device binary signatures",
-          "Configured Twilio fallback receiver decoding SMS signals when offline"
+          "Written hardware checksum checks verifying mobile device binary signatures"
         ],
-        proof: { label: "SMS Fallback Receiver Code Specs", url: "#" }
+        proof: { label: "Device Handshake Specs", url: "#" }
       }
     ]
   },
@@ -107,42 +117,47 @@ const DEFAULT_SPRINT_DATA = [
     feedback: "",
     developers: [
       {
-        name: "Victor",
-        role: "UI/UX Lead",
-        tasks: [
-          "Refined web dispatcher layout grids optimized for desktop admin view guidelines",
-          "Completed passenger profile visual details audit reviews",
-          "Incorporate client review comments on button contrast and layout margins"
-        ],
-        proof: { label: "Figma Sprint 3 Assets", url: "#" }
-      },
-      {
-        name: "Dan",
-        role: "Mobile App Lead",
+        name: "Daniel Anyamene",
+        role: "Frontend",
         tasks: [
           "Integrated native Face-ID/Touch-ID API triggers on PIN verification modals",
-          "Linked driver active escorts panel displaying dispatch coordinate notifications",
           "Resolved Google Maps API load coordinates caching latency conflicts"
         ],
         proof: { label: "TestFlight Alpha Build (v0.3.0)", url: "#" }
       },
       {
-        name: "Developer 3",
-        role: "Backend & Database Engineer",
+        name: "Victor Chukwuemeka",
+        role: "Backend",
         tasks: [
           "Implemented AES 256-bit cryptography handlers encrypting transit data before DB insertion",
-          "Deployed dispatch telemetry services to AWS Kubernetes staging clusters",
           "Set up automated coordinate logging audits monitoring driver connectivity states"
         ],
         proof: { label: "API Cryptographic Key Specs", url: "#" }
       },
       {
-        name: "Developer 4",
-        role: "Security & Maps Lead",
+        name: "Michael Chidiebere",
+        role: "Frontend",
+        tasks: [
+          "Linked driver active escorts panel displaying dispatch coordinate notifications",
+          "Coded custom biometric lock verification overlay triggers"
+        ],
+        proof: { label: "Frontend Integration Branch", url: "#" }
+      },
+      {
+        name: "Benjamin Olutiriko",
+        role: "UI/UX developer",
+        tasks: [
+          "Refined web dispatcher layout grids optimized for desktop admin view guidelines",
+          "Incorporate client review comments on button contrast and layout margins"
+        ],
+        proof: { label: "Figma Sprint 3 Assets", url: "#" }
+      },
+      {
+        name: "OluwaFemi Abimbola",
+        role: "Cyber Security",
         tasks: [
           "Integrated physical device hardware checks into the React Native mobile codebase",
-          "Conducted network penetration test audits against active staging REST API hosts",
-          "Verify coordinates triggers fallback routes redirecting telemetry feeds to SMS gateways"
+          "Conducted network penetration test audits against active staging REST API hosts"
         ],
         proof: { label: "Security & Penetration Audit Report", url: "#" }
       }
@@ -151,111 +166,332 @@ const DEFAULT_SPRINT_DATA = [
   {
     id: 4,
     title: "Week 4",
-    phase: "Phase 4: Audits & Handover",
+    phase: "Phase 4: Audits & Midterm Review",
     approved: false,
     feedback: "",
     developers: [
       {
-        name: "Victor",
-        role: "UI/UX Lead",
-        tasks: [
-          "Assembled ultimate exported Figma design specifications guide booklet",
-          "Verified mobile layouts display correctly on low-resolution smaller screens",
-          "Drafted visual layout specs describing app navigation transitions"
-        ],
-        proof: { label: "Figma Handover Specs", url: "#" }
-      },
-      {
-        name: "Dan",
-        role: "Mobile App Lead",
+        name: "Daniel Anyamene",
+        role: "Frontend",
         tasks: [
           "Conducted manual load and memory leaks checks on iOS and Android test systems",
-          "Prepared build release scripts for Apple App Store and Google Play console submittals",
           "Verified offline caching database encrypts files correctly when device goes offline"
         ],
         proof: { label: "App Handover Files", url: "#" }
       },
       {
-        name: "Developer 3",
-        role: "Backend & Database Engineer",
+        name: "Victor Chukwuemeka",
+        role: "Backend",
         tasks: [
           "Prepared postgres cloud production servers configuration metrics",
-          "Completed internal system architectural documentation files describing microservices links",
           "Conducted backend performance tests under load up to 10k concurrent connections"
         ],
         proof: { label: "System Handover Documentation", url: "#" }
       },
       {
-        name: "Developer 4",
-        role: "Security & Maps Lead",
+        name: "Michael Chidiebere",
+        role: "Frontend",
+        tasks: [
+          "Prepared build release scripts for Apple App Store and Google Play console submittals",
+          "Polished dispatcher admin viewport sizing constraints across all browser sizes"
+        ],
+        proof: { label: "App Build Logs", url: "#" }
+      },
+      {
+        name: "Benjamin Olutiriko",
+        role: "UI/UX developer",
+        tasks: [
+          "Assembled ultimate exported Figma design specifications guide booklet",
+          "Verified mobile layouts display correctly on low-resolution smaller screens"
+        ],
+        proof: { label: "Figma Handover Specs", url: "#" }
+      },
+      {
+        name: "OluwaFemi Abimbola",
+        role: "Cyber Security",
         tasks: [
           "Completed vulnerability scans on backend docker images and code modules",
-          "Authored API token key rotation guidelines and security handbook files",
           "Deployed fallback SMS gateway to production redundancy instances"
         ],
         proof: { label: "Security Handover Guidelines", url: "#" }
       }
     ]
+  },
+  {
+    id: 5,
+    title: "Week 5",
+    phase: "Phase 5: Extended Features & API Linkage",
+    approved: false,
+    feedback: "",
+    developers: [
+      {
+        name: "Daniel Anyamene",
+        role: "Frontend",
+        tasks: [
+          "Implemented user profile edit view layouts and theme settings selectors",
+          "Coded interactive escort trip details slider controls"
+        ],
+        proof: { label: "Profile UI Repository", url: "#" }
+      },
+      {
+        name: "Victor Chukwuemeka",
+        role: "Backend",
+        tasks: [
+          "Built API endpoint routing logs for live coordinate maps tracker feed",
+          "Optimized spatial telemetry indexes inside PostgreSQL tables"
+        ],
+        proof: { label: "API Maps Log specs", url: "#" }
+      },
+      {
+        name: "Michael Chidiebere",
+        role: "Frontend",
+        tasks: [
+          "Linked driver transit tracking map updates on WebSockets event relays",
+          "Resolved passenger location display timing lag exceptions"
+        ],
+        proof: { label: "WebSockets Client Logs", url: "#" }
+      },
+      {
+        name: "Benjamin Olutiriko",
+        role: "UI/UX developer",
+        tasks: [
+          "Completed dispatcher interface audit layouts and icons styles specs",
+          "Exported assets and fonts specifications for developers"
+        ],
+        proof: { label: "Figma Interface Audit Specs", url: "#" }
+      },
+      {
+        name: "OluwaFemi Abimbola",
+        role: "Cyber Security",
+        tasks: [
+          "Conducted security review checkups on socket payload sanitizers",
+          "Configured OAuth 2.0 auth key storage key partitions"
+        ],
+        proof: { label: "Security Keys Storage Docs", url: "#" }
+      }
+    ]
+  },
+  {
+    id: 6,
+    title: "Week 6",
+    phase: "Phase 6: Integration Testing & Security Hardening",
+    approved: false,
+    feedback: "",
+    developers: [
+      {
+        name: "Daniel Anyamene",
+        role: "Frontend",
+        tasks: [
+          "Integrated push notification service listeners checking transit state changes",
+          "Programmed local storage clean wipes for passive biometric logs"
+        ],
+        proof: { label: "Push Notification Handlers", url: "#" }
+      },
+      {
+        name: "Victor Chukwuemeka",
+        role: "Backend",
+        tasks: [
+          "Implemented fallback Redis task queues handling offline user message relays",
+          "Set up backend Prometheus logging dashboards on staging"
+        ],
+        proof: { label: "Redis Fallback Configs", url: "#" }
+      },
+      {
+        name: "Michael Chidiebere",
+        role: "Frontend",
+        tasks: [
+          "Linked user emergency SOS panel widget overlay display logic",
+          "Wrote unit test coverage for dispatcher grid scroll helpers"
+        ],
+        proof: { label: "Unit Test Logs", url: "#" }
+      },
+      {
+        name: "Benjamin Olutiriko",
+        role: "UI/UX developer",
+        tasks: [
+          "Designed passenger biometrics verification modal layout screens",
+          "Completed accessibility audits of contrast ratios on mobile dark theme"
+        ],
+        proof: { label: "Biometric Layout Designs", url: "#" }
+      },
+      {
+        name: "OluwaFemi Abimbola",
+        role: "Cyber Security",
+        tasks: [
+          "Integrated transit payload checksum verification routines in API router",
+          "Executed SQL injection audits on dispatcher booking queries"
+        ],
+        proof: { label: "SQL Injection Audit Report", url: "#" }
+      }
+    ]
+  },
+  {
+    id: 7,
+    title: "Week 7",
+    phase: "Phase 7: Performance Optimization",
+    approved: false,
+    feedback: "",
+    developers: [
+      {
+        name: "Daniel Anyamene",
+        role: "Frontend",
+        tasks: [
+          "Resolved React Native memory leaks inside telemetry state listener hooks",
+          "Polished tab switching transition performance on low-end Androids"
+        ],
+        proof: { label: "Mobile Layout Fixes Branch", url: "#" }
+      },
+      {
+        name: "Victor Chukwuemeka",
+        role: "Backend",
+        tasks: [
+          "Configured production spatial clustering parameters inside PostgreSQL database",
+          "Optimized WebSockets socket pool concurrency handles under 10k connections"
+        ],
+        proof: { label: "WS Concurrency Specs", url: "#" }
+      },
+      {
+        name: "Michael Chidiebere",
+        role: "Frontend",
+        tasks: [
+          "Implemented custom layout wrapper for weekly sprint feedback input forms",
+          "Polished dark theme toggle animations and scroll velocity properties"
+        ],
+        proof: { label: "UI Polish Logs", url: "#" }
+      },
+      {
+        name: "Benjamin Olutiriko",
+        role: "UI/UX developer",
+        tasks: [
+          "Drafted final layout checklist guides for executive review approvals",
+          "Verified visual styles on low-resolution smaller screens"
+        ],
+        proof: { label: "Visual Style Manual", url: "#" }
+      },
+      {
+        name: "OluwaFemi Abimbola",
+        role: "Cyber Security",
+        tasks: [
+          "Conducted full security code audits verifying TLS encryption protocols",
+          "Configured API rate limiter rules blockading socket spam vectors"
+        ],
+        proof: { label: "Rate Limiter Code Configs", url: "#" }
+      }
+    ]
+  },
+  {
+    id: 8,
+    title: "Week 8",
+    phase: "Phase 8: Production Release Checklist",
+    approved: false,
+    feedback: "",
+    developers: [
+      {
+        name: "Daniel Anyamene",
+        role: "Frontend",
+        tasks: [
+          "Prepared React Native App Store build binaries and release configurations",
+          "Conducted offline state data recovery integration test validations"
+        ],
+        proof: { label: "App Release Handover", url: "#" }
+      },
+      {
+        name: "Victor Chukwuemeka",
+        role: "Backend",
+        tasks: [
+          "Assembled postgres database spatial replica servers configuration logs",
+          "Drafted backend architectural handover documents for engineering leads"
+        ],
+        proof: { label: "Database Handover Log", url: "#" }
+      },
+      {
+        name: "Michael Chidiebere",
+        role: "Frontend",
+        tasks: [
+          "Polished dispatcher admin viewport sizing constraints across all browser sizes",
+          "Verified modal click behavior on high-refresh-rate layouts"
+        ],
+        proof: { label: "Layout Handover Mocks", url: "#" }
+      },
+      {
+        name: "Benjamin Olutiriko",
+        role: "UI/UX developer",
+        tasks: [
+          "Assembled final Figma design files handoff specs booklet",
+          "Reviewed layout elements against corporate brand book guidelines"
+        ],
+        proof: { label: "Figma Handoff Booklet", url: "#" }
+      },
+      {
+        name: "OluwaFemi Abimbola",
+        role: "Cyber Security",
+        tasks: [
+          "Conducted ultimate penetration audit tests on active staging REST API instances",
+          "Set up automated security scanners running docker container vulnerability checks"
+        ],
+        proof: { label: "Ultimate Security Penetration Audit", url: "#" }
+      }
+    ]
   }
 ];
 
-// Fallback high-quality demonstration commit logs
+// Fallback high-quality demonstration commit logs mapped to the 5 team members
 const MOCK_COMMITS = [
   {
     hash: "a4c7e2b",
     message: "feat: update user booking map view layout and overlays",
-    username: "victor-dev",
+    username: "daniel-dev",
     date: "Jul 21",
     devIndex: 0
   },
   {
     hash: "f8d2b1a",
-    message: "fix: resolve security tier selection button contrast click bugs",
-    username: "victor-dev",
+    message: "fix: resolve navigation tabs responsiveness bugs",
+    username: "daniel-dev",
     date: "Jul 20",
     devIndex: 0
   },
   {
     hash: "c9b2a1f",
-    message: "feat: implement Face-ID / Touch-ID biometric API triggers on iOS",
-    username: "dan-mobile",
+    message: "feat: deploy dispatch coordinates telemetry spatial indices to production",
+    username: "victor-backend",
     date: "Jul 21",
     devIndex: 1
   },
   {
     hash: "d7a4f6e",
-    message: "fix: resolve Google Maps coordinate updates latency caching conflicts",
-    username: "dan-mobile",
+    message: "fix: configure coordinates spatial database queries latency",
+    username: "victor-backend",
     date: "Jul 20",
     devIndex: 1
   },
   {
     hash: "e5c3b1d",
-    message: "feat: deploy dispatch coordinates telemetry microservice to AWS Kubernetes",
-    username: "cynthia-backend",
+    message: "feat: link socket location update event listeners inside transit panel",
+    username: "michael-front",
     date: "Jul 21",
     devIndex: 2
   },
   {
     hash: "b2d8f9a",
-    message: "fix: configure coordinates database PostgreSQL spatial indices limits",
-    username: "cynthia-backend",
+    message: "fix: resolve modal transition keyframes lag on desktop refresh rates",
+    username: "michael-front",
     date: "Jul 19",
     devIndex: 2
   },
   {
     hash: "9a7f3c2",
-    message: "feat: integrate physical device hardware integrity checks signature",
-    username: "elena-security",
+    message: "feat: complete dispatcher interface layouts asset design guides",
+    username: "benjamin-design",
     date: "Jul 21",
     devIndex: 3
   },
   {
     hash: "8b6c4e1",
-    message: "fix: resolve emergency fallback SMS Twilio redundancy gateway routes",
-    username: "elena-security",
+    message: "fix: resolve emergency fallback SMS gateway TLS verification fail",
+    username: "femi-security",
     date: "Jul 18",
-    devIndex: 3
+    devIndex: 4
   }
 ];
 
@@ -312,9 +548,9 @@ function updateThemeIcon(theme) {
   if (window.lucide) window.lucide.createIcons();
 }
 
-// Local Storage data sync
+// Local Storage data sync - Version 4 cleans up any stale structures
 function loadSprintData() {
-  const stored = localStorage.getItem("collinsverse_sprint_data_v3");
+  const stored = localStorage.getItem("collinsverse_sprint_data_v4");
   if (stored) {
     try {
       sprintData = JSON.parse(stored);
@@ -329,7 +565,7 @@ function loadSprintData() {
 }
 
 function saveSprintData() {
-  localStorage.setItem("collinsverse_sprint_data_v3", JSON.stringify(sprintData));
+  localStorage.setItem("collinsverse_sprint_data_v4", JSON.stringify(sprintData));
 }
 
 // Fetch GitHub commits via REST API
@@ -376,19 +612,19 @@ async function fetchGitHubCommits() {
 
 function matchCommitToDeveloper(commitMessage) {
   const msg = commitMessage.toLowerCase();
-  if (msg.includes("ui") || msg.includes("ux") || msg.includes("design") || msg.includes("layout") || msg.includes("css") || msg.includes("color") || msg.includes("theme") || msg.includes("style") || msg.includes("figma") || msg.includes("typography") || msg.includes("header") || msg.includes("cards") || msg.includes("z-index")) {
-    return 0; // Victor — UI/UX Lead
+  if (msg.includes("security") || msg.includes("auth") || msg.includes("encrypt") || msg.includes("vulnerability") || msg.includes("token") || msg.includes("firewall") || msg.includes("hack") || msg.includes("pentest")) {
+    return 4; // OluwaFemi Abimbola — Cyber Security
   }
-  if (msg.includes("mobile") || msg.includes("react") || msg.includes("native") || msg.includes("app.js") || msg.includes("index.html") || msg.includes("js") || msg.includes("view") || msg.includes("tab") || msg.includes("click") || msg.includes("modal") || msg.includes("drawer") || msg.includes("auth-dev") || msg.includes("passcode") || msg.includes("pin") || msg.includes("terminal")) {
-    return 1; // Dan — Mobile App Lead
+  if (msg.includes("ui") || msg.includes("ux") || msg.includes("design") || msg.includes("layout") || msg.includes("figma") || msg.includes("typography") || msg.includes("style") || msg.includes("brand")) {
+    return 3; // Benjamin Olutiriko — UI/UX developer
   }
-  if (msg.includes("db") || msg.includes("backend") || msg.includes("database") || msg.includes("api") || msg.includes("server") || msg.includes("postgres") || msg.includes("docker") || msg.includes("redis") || msg.includes("microservice") || msg.includes("express") || msg.includes("node") || msg.includes("relational")) {
-    return 2; // Developer 3 — Backend & Database Engineer
+  if (msg.includes("api") || msg.includes("db") || msg.includes("backend") || msg.includes("database") || msg.includes("postgres") || msg.includes("docker") || msg.includes("redis") || msg.includes("server")) {
+    return 1; // Victor Chukwuemeka — Backend
   }
-  if (msg.includes("security") || msg.includes("auth") || msg.includes("maps") || msg.includes("telemetry") || msg.includes("encrypt") || msg.includes("vulnerability") || msg.includes("latency") || msg.includes("gps") || msg.includes("fallback") || msg.includes("sms") || msg.includes("routing") || msg.includes("token")) {
-    return 3; // Developer 4 — Security & Maps Lead
+  if (msg.includes("mobile") || msg.includes("react") || msg.includes("native") || msg.includes("app.js") || msg.includes("view") || msg.includes("tab") || msg.includes("click") || msg.includes("modal") || msg.includes("transition")) {
+    return 0; // Daniel Anyamene — Frontend
   }
-  return commitMessage.length % 4; // Dynamic distribute
+  return 2; // Michael Chidiebere — Frontend (fallback)
 }
 
 function formatCommitDate(dateString) {
@@ -429,6 +665,74 @@ function renderWeeksTimeline() {
 
     container.appendChild(tab);
   });
+
+  // Render "+ Add Sprint Week" button at the end of sidebar list
+  const addButton = document.createElement("button");
+  addButton.className = "w-full flex items-center justify-center gap-2 px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-dashed border-slate-350 dark:border-slate-700 hover:border-slate-800 dark:hover:border-blue-500 rounded-xl text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white bg-slate-50/50 dark:bg-slate-900/50 hover:bg-slate-100 dark:hover:bg-slate-900 transition duration-150 mt-2";
+  addButton.onclick = addNewWeek;
+  addButton.innerHTML = `<i data-lucide="plus" class="w-4 h-4"></i> Add Sprint Week`;
+  container.appendChild(addButton);
+
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function addNewWeek() {
+  const nextId = sprintData.length > 0 ? Math.max(...sprintData.map(w => w.id)) + 1 : 1;
+  const newWeek = {
+    id: nextId,
+    title: `Week ${nextId}`,
+    phase: `Phase ${nextId}: Continuation & Scaling`,
+    approved: false,
+    feedback: "",
+    developers: [
+      {
+        name: "Daniel Anyamene",
+        role: "Frontend",
+        tasks: [
+          "Sprint week initialized. Custom front-end client deliverables pending backlog prioritization."
+        ],
+        proof: { label: "Verification Repository", url: "#" }
+      },
+      {
+        name: "Victor Chukwuemeka",
+        role: "Backend",
+        tasks: [
+          "Sprint week initialized. Backend API and server-side logs pending sprint planning."
+        ],
+        proof: { label: "Verification Repository", url: "#" }
+      },
+      {
+        name: "Michael Chidiebere",
+        role: "Frontend",
+        tasks: [
+          "Sprint week initialized. User interface component updates pending sprint planning."
+        ],
+        proof: { label: "Verification Repository", url: "#" }
+      },
+      {
+        name: "Benjamin Olutiriko",
+        role: "UI/UX developer",
+        tasks: [
+          "Sprint week initialized. Interactive design mocks mapping pending user feedback review."
+        ],
+        proof: { label: "Figma Designs", url: "#" }
+      },
+      {
+        name: "OluwaFemi Abimbola",
+        role: "Cyber Security",
+        tasks: [
+          "Sprint week initialized. Security penetration audits pending environment release updates."
+        ],
+        proof: { label: "Security Reports", url: "#" }
+      }
+    ]
+  };
+
+  sprintData.push(newWeek);
+  saveSprintData();
+  renderWeeksTimeline();
+  selectWeek(nextId);
+  showSystemAlert(`Week ${nextId} created successfully!`);
 }
 
 function selectWeek(weekId) {
@@ -445,7 +749,7 @@ function renderActiveWeek() {
   const currentWeek = sprintData.find(w => w.id === activeWeekId);
   if (!currentWeek) return;
 
-  // Render 4 Developer rows/cards cleanly
+  // Render Developer cards cleanly
   let devCardsHtml = "";
 
   currentWeek.developers.forEach((dev, devIdx) => {
@@ -489,8 +793,12 @@ function renderActiveWeek() {
       `;
     }
 
+    // Grid balancing: make the 5th card span 2 columns on desktop viewports
+    const isLastOdd = (devIdx === currentWeek.developers.length - 1) && (currentWeek.developers.length % 2 !== 0);
+    const cardColSpan = isLastOdd ? "md:col-span-2" : "";
+
     devCardsHtml += `
-      <div class="document-card flip-card flex flex-col justify-between gap-4" style="animation-delay: ${(devIdx + 1) * 100}ms">
+      <div class="document-card flip-card flex flex-col justify-between gap-4 ${cardColSpan}" style="animation-delay: ${(devIdx + 1) * 100}ms">
         <div class="space-y-4">
           <!-- Developer Profile & Role -->
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b-2 border-slate-100 dark:border-slate-800 pb-3">
@@ -572,7 +880,7 @@ function renderActiveWeek() {
       <!-- Signoff status banner -->
       ${signoffStatusBanner}
 
-      <!-- Grid of 4 Developer output logs -->
+      <!-- Grid of Developer output logs -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         ${devCardsHtml}
       </div>
@@ -584,7 +892,7 @@ function renderActiveWeek() {
             <i data-lucide="signature" class="w-5 h-5 text-slate-400"></i>
             Client Review Feedback & Approvals
           </h3>
-          <p class="text-sm text-slate-500 dark:text-slate-405 mt-0.5">Please review the logs above and record notes or sign-off approval checkpoints below.</p>
+          <p class="text-sm text-slate-550 dark:text-slate-405 mt-0.5">Please review the logs above and record notes or sign-off approval checkpoints below.</p>
         </div>
 
         <div class="space-y-4">
@@ -654,9 +962,16 @@ function openDevUpdateModal() {
     if (passcode) passcode.value = "";
     if (errorText) errorText.classList.add("hidden");
     
-    // Default selects to active week
+    // Dynamic week select list matching all loaded weeks
     const weekSelect = document.getElementById("modal-week-select");
     if (weekSelect) {
+      weekSelect.innerHTML = "";
+      sprintData.forEach(week => {
+        const opt = document.createElement("option");
+        opt.value = week.id.toString();
+        opt.innerText = `Week ${week.id}`;
+        weekSelect.appendChild(opt);
+      });
       weekSelect.value = activeWeekId.toString();
     }
 
