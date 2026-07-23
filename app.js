@@ -268,6 +268,19 @@ document.addEventListener("DOMContentLoaded", () => {
   loadSprintData();
   renderWeeksTimeline();
   fetchGitHubCommits(); // Trigger live Git repo audit check
+
+  // Cursor Click Glow Effect Trigger
+  document.addEventListener("click", (e) => {
+    const glow = document.createElement("div");
+    glow.className = "click-glow";
+    glow.style.left = `${e.pageX}px`;
+    glow.style.top = `${e.pageY}px`;
+    document.body.appendChild(glow);
+
+    glow.addEventListener("animationend", () => {
+      glow.remove();
+    });
+  });
 });
 
 // Load/Toggle Theme Settings
@@ -399,15 +412,15 @@ function renderWeeksTimeline() {
     const isSelected = week.id === activeWeekId;
     const isApproved = week.approved;
 
-    let borderStyle = isSelected ? "border-slate-800 dark:border-blue-500 font-extrabold" : "border-slate-200 dark:border-slate-800";
+    let borderStyle = isSelected ? "border-slate-800 dark:border-blue-500 font-bold" : "border-slate-200 dark:border-slate-800";
     let bgStyle = isSelected ? "bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-white" : "bg-white dark:bg-slate-950 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900";
     
     let badgeText = isApproved 
-      ? `<span class="flex items-center gap-1 text-[11px] font-extrabold text-emerald-600 dark:text-emerald-400 uppercase bg-emerald-50 dark:bg-emerald-950 px-2 py-0.5 rounded border border-emerald-300/30">✓ Approved</span>`
-      : `<span class="flex items-center gap-1 text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase bg-slate-50 dark:bg-slate-900 px-2 py-0.5 rounded border border-slate-300/30">Pending</span>`;
+      ? `<span class="flex items-center gap-1 text-[10px] sm:text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 uppercase bg-emerald-50 dark:bg-emerald-950 px-2 py-0.5 rounded border border-emerald-300/30">✓ Approved</span>`
+      : `<span class="flex items-center gap-1 text-[10px] sm:text-[11px] font-medium text-slate-400 dark:text-slate-500 uppercase bg-slate-50 dark:bg-slate-900 px-2 py-0.5 rounded border border-slate-300/30">Pending</span>`;
 
     const tab = document.createElement("button");
-    tab.className = `flex-grow sm:flex-grow-0 flex items-center justify-between gap-4 px-5 py-3 border-2 rounded-xl text-base ${borderStyle} ${bgStyle} transition duration-150`;
+    tab.className = `flex-grow sm:flex-grow-0 flex items-center justify-between gap-4 px-3 py-2 sm:px-5 sm:py-3 border-2 rounded-xl text-sm sm:text-base ${borderStyle} ${bgStyle} transition duration-150`;
     tab.onclick = () => selectWeek(week.id);
     tab.innerHTML = `
       <span class="tracking-tight">${week.title}</span>
@@ -439,7 +452,7 @@ function renderActiveWeek() {
     // Generate tasks bullet points
     let tasksBullets = "";
     dev.tasks.forEach(task => {
-      tasksBullets += `<li class="relative pl-6 before:content-['•'] before:absolute before:left-1 before:text-slate-400 dark:before:text-slate-600 font-medium text-slate-800 dark:text-slate-200">${task}</li>`;
+      tasksBullets += `<li class="relative pl-6 before:content-['•'] before:absolute before:left-1 before:text-slate-450 dark:before:text-slate-600 font-normal text-slate-750 dark:text-slate-300">${task}</li>`;
     });
 
     // Filter GitHub API commits assigned to this developer
@@ -450,17 +463,17 @@ function renderActiveWeek() {
       let commitsRows = "";
       devCommits.forEach(c => {
         commitsRows += `
-          <div class="text-sm border-b border-slate-100 dark:border-slate-800 last:border-b-0 py-1.5 flex flex-col sm:flex-row sm:items-start justify-between gap-1">
-            <span class="text-slate-800 dark:text-slate-200 font-medium break-words">• <code class="font-mono text-[10px] bg-slate-100 dark:bg-slate-900 px-1 py-0.5 rounded text-blue-600 dark:text-blue-400 font-bold">${c.hash}</code> ${c.message}</span>
-            <span class="text-xs font-semibold text-slate-450 dark:text-slate-500 whitespace-nowrap self-end sm:self-start">${c.date}</span>
+          <div class="text-xs sm:text-sm border-b border-slate-100 dark:border-slate-800 last:border-b-0 py-1.5 flex flex-col sm:flex-row sm:items-start justify-between gap-1">
+            <span class="text-slate-750 dark:text-slate-300 font-normal break-words">• <code class="font-mono text-[9px] sm:text-[10px] bg-slate-100 dark:bg-slate-900 px-1 py-0.5 rounded text-blue-600 dark:text-blue-400 font-semibold">${c.hash}</code> ${c.message}</span>
+            <span class="text-[10px] sm:text-xs font-medium text-slate-450 dark:text-slate-500 whitespace-nowrap self-end sm:self-start">${c.date}</span>
           </div>
         `;
       });
       gitActivityHtml = `
         <div class="mt-4 pt-3 border-t border-slate-150 dark:border-slate-800 space-y-2">
           <div class="flex items-center justify-between">
-            <span class="text-[11px] font-extrabold text-slate-400 dark:text-slate-500 uppercase tracking-widest">Live GitHub Activity</span>
-            <span class="text-xs font-bold text-slate-500 dark:text-slate-450">@${devCommits[0].username} — ${devCommits.length} commits</span>
+            <span class="text-[11px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-widest">Live GitHub Activity</span>
+            <span class="text-xs font-semibold text-slate-500 dark:text-slate-450">@${devCommits[0].username} — ${devCommits.length} commits</span>
           </div>
           <div class="bg-slate-50/50 dark:bg-slate-950/20 border border-slate-200/50 dark:border-slate-800/50 rounded-lg px-3 py-2 space-y-1">
             ${commitsRows}
@@ -470,7 +483,7 @@ function renderActiveWeek() {
     } else {
       gitActivityHtml = `
         <div class="mt-4 pt-3 border-t border-slate-150 dark:border-slate-800 space-y-2">
-          <span class="text-[11px] font-extrabold text-slate-400 dark:text-slate-500 uppercase tracking-widest block">Live GitHub Activity</span>
+          <span class="text-[11px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-widest block">Live GitHub Activity</span>
           <p class="text-xs text-slate-400 dark:text-slate-500 italic">No commits matched this contributor this week</p>
         </div>
       `;
@@ -482,11 +495,11 @@ function renderActiveWeek() {
           <!-- Developer Profile & Role -->
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b-2 border-slate-100 dark:border-slate-800 pb-3">
             <div>
-              <h3 class="text-xl font-bold text-slate-900 dark:text-white">${dev.name}</h3>
-              <p class="text-sm font-semibold text-slate-550 dark:text-slate-400">${dev.role}</p>
+              <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">${dev.name}</h3>
+              <p class="text-xs sm:text-sm font-normal text-slate-500 dark:text-slate-450">${dev.role}</p>
             </div>
             <div>
-              <span class="text-xs font-bold bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-350 border border-slate-205 dark:border-slate-800 px-3 py-1 rounded-md">
+              <span class="text-[10px] sm:text-xs font-semibold bg-slate-100 dark:bg-slate-900 text-slate-655 dark:text-slate-350 border border-slate-200 dark:border-slate-800 px-3 py-1 rounded-md">
                 Verification Active
               </span>
             </div>
@@ -494,7 +507,7 @@ function renderActiveWeek() {
 
           <!-- Completed Work Bulletins -->
           <div class="space-y-2">
-            <span class="text-[11px] font-extrabold text-slate-400 dark:text-slate-500 uppercase tracking-widest block">Completed Tasks Log</span>
+            <span class="text-[11px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-widest block">Completed Tasks Log</span>
             <ul class="space-y-2 text-base">
               ${tasksBullets}
             </ul>
@@ -506,9 +519,9 @@ function renderActiveWeek() {
           ${gitActivityHtml}
 
           <!-- Single proof link -->
-          <div class="mt-4 pt-3 border-t-2 border-slate-100 dark:border-slate-800 flex items-center justify-between">
-            <span class="text-xs font-extrabold text-slate-400 dark:text-slate-500 uppercase tracking-widest">Verification Link</span>
-            <a href="${dev.proof.url}" class="inline-flex items-center gap-1 text-sm font-extrabold text-blue-600 dark:text-blue-400 hover:underline">
+          <div class="mt-4 pt-3 border-t-2 border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <span class="text-[10px] sm:text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-widest">Verification Link</span>
+            <a href="${dev.proof.url}" class="inline-flex items-center gap-1 text-xs sm:text-sm font-bold text-blue-600 dark:text-blue-400 hover:underline">
               <i data-lucide="external-link" class="w-4 h-4"></i>
               ${dev.proof.label}
             </a>
@@ -523,11 +536,11 @@ function renderActiveWeek() {
   const feedbackValue = currentWeek.feedback || "";
   
   let signoffStatusBanner = isApproved 
-    ? `<div class="p-4 bg-emerald-50 dark:bg-emerald-950/20 border-2 border-emerald-200 dark:border-emerald-900/50 rounded-xl text-base text-emerald-800 dark:text-emerald-400 font-bold flex items-center gap-2">
+    ? `<div class="p-4 bg-emerald-50 dark:bg-emerald-950/20 border-2 border-emerald-200 dark:border-emerald-900/50 rounded-xl text-base text-emerald-800 dark:text-emerald-400 font-semibold flex items-center gap-2">
          <i data-lucide="check-circle" class="w-5 h-5 flex-shrink-0 text-emerald-600 dark:text-emerald-400"></i>
          ✓ Approved: The deliverables for ${currentWeek.title} have been formally verified and signed off by the client.
        </div>`
-    : `<div class="p-4 bg-slate-50 dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-xl text-base text-slate-600 dark:text-slate-400 font-semibold flex items-center gap-2">
+    : `<div class="p-4 bg-slate-50 dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-xl text-base text-slate-650 dark:text-slate-405 font-medium flex items-center gap-2">
          <i data-lucide="clock" class="w-5 h-5 flex-shrink-0 text-slate-400"></i>
          ⧗ Pending Review: Awaiting formal sign-off confirmation from the client auditor.
        </div>`;
@@ -537,7 +550,7 @@ function renderActiveWeek() {
     : `Approve Week ${currentWeek.id} Deliverables`;
 
   let buttonStyles = isApproved
-    ? "bg-red-600 hover:bg-red-700 text-white"
+    ? "bg-red-650 hover:bg-red-700 text-white"
     : "btn-primary";
 
   container.innerHTML = `
@@ -546,11 +559,11 @@ function renderActiveWeek() {
       <!-- Sprint details metadata header -->
       <div class="bg-slate-50 dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <span class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest block">Active View Details</span>
-          <h2 class="text-2xl font-black text-slate-900 dark:text-white mt-1">${currentWeek.title} Log — ${currentWeek.phase}</h2>
+          <span class="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-widest block">Active View Details</span>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-1">${currentWeek.title} Log — ${currentWeek.phase}</h2>
         </div>
         <div>
-          <span class="text-xs font-bold bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 px-3 py-1.5 rounded-md uppercase font-mono tracking-wider">
+          <span class="text-[10px] sm:text-xs font-semibold bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 px-3 py-1.5 rounded-md uppercase font-mono tracking-wider">
             Report Ready
           </span>
         </div>
@@ -571,24 +584,24 @@ function renderActiveWeek() {
             <i data-lucide="signature" class="w-5 h-5 text-slate-400"></i>
             Client Review Feedback & Approvals
           </h3>
-          <p class="text-sm text-slate-500 dark:text-slate-400 mt-0.5">Please review the logs above and record notes or sign-off approval checkpoints below.</p>
+          <p class="text-sm text-slate-500 dark:text-slate-405 mt-0.5">Please review the logs above and record notes or sign-off approval checkpoints below.</p>
         </div>
 
         <div class="space-y-4">
           <div class="space-y-2">
-            <label for="client-feedback" class="block text-xs font-extrabold text-slate-400 dark:text-slate-500 uppercase tracking-widest">Review Comments / Feedback</label>
+            <label for="client-feedback" class="block text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-widest">Review Comments / Feedback</label>
             <textarea 
               id="client-feedback" 
               rows="4" 
               placeholder="Enter details, adjustments requested, or general sprint feedback here..."
-              class="w-full rounded-xl px-4 py-3 text-base text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 font-semibold"
+              class="w-full rounded-xl px-4 py-3 text-base text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 font-normal border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 focus:border-blue-500"
             >${feedbackValue}</textarea>
           </div>
 
           <div class="pt-2 flex items-center justify-end">
             <button 
               onclick="saveClientSignOff()" 
-              class="px-6 py-3 rounded-xl font-extrabold text-sm uppercase tracking-wide btn-primary ${buttonStyles}"
+              class="w-full sm:w-auto px-6 py-3 rounded-xl font-semibold text-xs sm:text-sm uppercase tracking-wide btn-primary ${buttonStyles}"
             >
               ${approveButtonText}
             </button>

@@ -3,8 +3,13 @@
 
 /* Executive Typography Scaling: minimum 18px body font size */
 html {
-  font-size: 18px; /* 1rem is now exactly 18px. text-base is 18px. text-sm is ~15.7px. text-lg is ~20px. */
+  font-size: 16px; /* Base 16px on mobile */
   transition: background-color 0.2s ease, color 0.2s ease;
+}
+@media (min-width: 640px) {
+  html {
+    font-size: 18px; /* Scale up to 18px on tablets and desktop */
+  }
 }
 
 :root {
@@ -47,8 +52,14 @@ body {
   background-color: var(--bg-card);
   border: 2px solid var(--border-color);
   border-radius: 12px;
-  padding: 1.75rem;
+  padding: 1rem;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .document-card {
+    padding: 1.75rem;
+  }
 }
 
 .document-card:hover {
@@ -107,4 +118,32 @@ textarea:focus {
 ::-webkit-scrollbar-thumb {
   background: var(--border-color);
   border-radius: 9999px;
+}
+
+/* Cursor Click Glow Effect */
+.click-glow {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  margin-top: -40px;
+  margin-left: -40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.5) 0%, rgba(99, 102, 241, 0.15) 50%, rgba(59, 130, 246, 0) 70%);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  pointer-events: none;
+  z-index: 9999;
+  transform: scale(0.1);
+  opacity: 1;
+  animation: clickGlowAnim 0.6s cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
+}
+
+@keyframes clickGlowAnim {
+  0% {
+    transform: scale(0.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
 }
