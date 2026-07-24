@@ -1,4 +1,4 @@
-// CollinsVerse Technologies — Weekly Project Log Core Engine
+// CollinsVerse Technologies - Weekly Project Log Core Engine
 
 const DEFAULT_SPRINT_DATA = [];
 for (let i = 1; i <= 8; i++) {
@@ -210,18 +210,18 @@ async function fetchGitHubCommits() {
 function matchCommitToDeveloper(commitMessage) {
   const msg = commitMessage.toLowerCase();
   if (msg.includes("security") || msg.includes("auth") || msg.includes("encrypt") || msg.includes("vulnerability") || msg.includes("token") || msg.includes("firewall") || msg.includes("hack") || msg.includes("pentest")) {
-    return 4; // OluwaFemi Abimbola — Cyber Security
+    return 4; // OluwaFemi Abimbola - Cyber Security
   }
   if (msg.includes("ui") || msg.includes("ux") || msg.includes("design") || msg.includes("layout") || msg.includes("figma") || msg.includes("typography") || msg.includes("style") || msg.includes("brand")) {
-    return 3; // Benjamin Olutiriko — UI/UX developer
+    return 3; // Benjamin Olutiriko - UI/UX developer
   }
   if (msg.includes("api") || msg.includes("db") || msg.includes("backend") || msg.includes("database") || msg.includes("postgres") || msg.includes("docker") || msg.includes("redis") || msg.includes("server")) {
-    return 1; // Victor Chukwuemeka — Backend
+    return 1; // Victor Chukwuemeka - Backend
   }
   if (msg.includes("mobile") || msg.includes("react") || msg.includes("native") || msg.includes("app.js") || msg.includes("view") || msg.includes("tab") || msg.includes("click") || msg.includes("modal") || msg.includes("transition")) {
-    return 0; // Daniel Anyamene — Frontend
+    return 0; // Daniel Anyamene - Frontend
   }
-  return 2; // Michael Chidiebere — Frontend (fallback)
+  return 2; // Michael Chidiebere - Frontend (fallback)
 }
 
 function formatCommitDate(dateString) {
@@ -384,11 +384,18 @@ function renderActiveWeek() {
     // Generate tasks bullet points
     let tasksBullets = "";
     if (dev.tasks && dev.tasks.length > 0) {
-      dev.tasks.forEach(task => {
-        tasksBullets += `<li class="relative pl-6 before:content-['•'] before:absolute before:left-1 before:text-slate-450 dark:before:text-slate-600 font-normal text-slate-750 dark:text-slate-300">${task}</li>`;
+      dev.tasks.forEach((task, taskIdx) => {
+        tasksBullets += `
+          <li class="group flex items-center justify-between gap-2 py-1 border-b border-slate-100/50 dark:border-slate-800/30 last:border-b-0 text-slate-750 dark:text-slate-300 font-normal">
+            <span class="break-words flex-grow">• ${task}</span>
+            <button onclick="deleteTask(${devIdx}, ${taskIdx})" class="opacity-0 group-hover:opacity-100 text-slate-400 hover:text-red-655 transition p-1 flex-shrink-0" title="Delete Task">
+              <i data-lucide="trash-2" class="w-4 h-4"></i>
+            </button>
+          </li>
+        `;
       });
     } else {
-      tasksBullets = `<li class="text-xs text-slate-450 dark:text-slate-500 italic pl-0 before:content-none">No tasks logged yet for this week</li>`;
+      tasksBullets = `<li class="text-xs text-slate-450 dark:text-slate-500 italic pl-0">No tasks logged yet for this week</li>`;
     }
 
     // Generate weekly goals checklist
@@ -426,7 +433,7 @@ function renderActiveWeek() {
         <div class="mt-4 pt-3 border-t border-slate-150 dark:border-slate-800 space-y-2">
           <div class="flex items-center justify-between">
             <span class="text-[11px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-widest">Live GitHub Activity</span>
-            <span class="text-xs font-semibold text-slate-500 dark:text-slate-450">@${devCommits[0].username} — ${devCommits.length} commits</span>
+             <span class="text-xs font-semibold text-slate-500 dark:text-slate-450">@${devCommits[0].username} - ${devCommits.length} commits</span>
           </div>
           <div class="bg-slate-50/50 dark:bg-slate-950/20 border border-slate-200/50 dark:border-slate-800/50 rounded-lg px-3 py-2 space-y-1">
             ${commitsRows}
@@ -536,7 +543,7 @@ function renderActiveWeek() {
       <div class="bg-slate-50 dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 flip-card">
         <div>
           <span class="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-widest block">Active View Details</span>
-          <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-1">${currentWeek.title} Log — ${currentWeek.phase}</h2>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-1">${currentWeek.title} Log - ${currentWeek.phase}</h2>
         </div>
         <div class="flex items-center gap-2.5">
           <button onclick="deleteActiveWeek()" class="px-3 py-1.5 rounded-md text-xs font-bold bg-red-50 hover:bg-red-100 dark:bg-red-950/20 dark:hover:bg-red-950/50 border border-red-200 dark:border-red-900/50 text-red-650 dark:text-red-400 uppercase transition tracking-wider flex items-center gap-1.5" title="Delete this week">
@@ -624,15 +631,11 @@ function openDevUpdateModal() {
   const tasksInput = document.getElementById("modal-tasks-input");
   const proofLabel = document.getElementById("modal-proof-label");
   const proofUrl = document.getElementById("modal-proof-url");
-  const passcode = document.getElementById("modal-passcode");
-  const errorText = document.getElementById("modal-error");
   
   if (modal) {
     if (tasksInput) tasksInput.value = "";
     if (proofLabel) proofLabel.value = "";
     if (proofUrl) proofUrl.value = "";
-    if (passcode) passcode.value = "";
-    if (errorText) errorText.classList.add("hidden");
     
     // Dynamic week select list matching all loaded weeks
     const weekSelect = document.getElementById("modal-week-select");
@@ -662,22 +665,9 @@ function submitDevUpdate() {
   const tasksInput = document.getElementById("modal-tasks-input");
   const proofLabelInput = document.getElementById("modal-proof-label");
   const proofUrlInput = document.getElementById("modal-proof-url");
-  const passcode = document.getElementById("modal-passcode");
-  const errorText = document.getElementById("modal-error");
 
-  if (!devSelect || !weekSelect || !tasksInput || !passcode || !errorText) return;
+  if (!devSelect || !weekSelect || !tasksInput) return;
 
-  const enteredPIN = passcode.value.trim();
-  
-  // Validate shared PIN passcode
-  if (enteredPIN !== "1234") {
-    errorText.classList.remove("hidden");
-    passcode.value = "";
-    passcode.focus();
-    return;
-  }
-
-  errorText.classList.add("hidden");
   const targetWeekId = parseInt(weekSelect.value);
   const targetDevIdx = parseInt(devSelect.value);
   const rawTasks = tasksInput.value.split("\n").map(t => t.trim()).filter(t => t.length > 0);
@@ -709,6 +699,24 @@ function submitDevUpdate() {
     
     closeDevUpdateModal();
     showSystemAlert(`Logged ${rawTasks.length} tasks successfully for ${dev.name}!`);
+  }
+}
+
+function deleteTask(devIdx, taskIdx) {
+  const enteredPass = prompt("Enter Security Passcode to Delete Task:");
+  if (enteredPass !== "godrive2026") {
+    showSystemAlert("Access Denied: Invalid security passcode!");
+    return;
+  }
+
+  const currentWeek = sprintData.find(w => w.id === activeWeekId);
+  if (currentWeek && currentWeek.developers[devIdx]) {
+    const dev = currentWeek.developers[devIdx];
+    dev.tasks = dev.tasks || [];
+    dev.tasks.splice(taskIdx, 1);
+    saveSprintData();
+    renderActiveWeek();
+    showSystemAlert("Task deleted successfully!");
   }
 }
 
